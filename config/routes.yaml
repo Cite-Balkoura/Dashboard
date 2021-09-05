@@ -1,3 +1,5 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+connect_discord_check:
+    path: /login/authenticate
+
+logout:
+    path: /logout

@@ -52,9 +52,12 @@
                 {% if app.user %}
                     <div class="ml-3 relative">
                         <div>
-                            <button type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true" onclick="toggleUserDropdown()">
+                            <button type="button" class="flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true" onclick="toggleUserDropdown()">
                                 <span class="sr-only">Ouvrir le menu utilisateur</span>
-                                <img class="h-8 w-8 rounded-full" src="" alt="">
+                                <a class="sm:block hidden flex text-white text-sm font-grimtown font-medium mr-2">
+                                    {{ app.user.username }}
+                                </a>
+                                <img class="h-8 w-8 rounded-full" src="{{ app.user.avatarUrl }}" alt="">
                             </button>
                         </div>
                         <div id="userDropdown" class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
@@ -64,14 +67,14 @@
                         </div>
                     </div>
                 {% else %}
-                    <div class="flex text-white text-sm font-grimtown font-medium items-center transform hover:translate-x-1 transition-transform ease-in duration-200">
+                    <a href="{{ path('login') }}" class="flex text-white text-sm font-grimtown font-medium items-center transform hover:translate-x-1 transition-transform ease-in duration-200">
                         <div class="sm:block hidden">
                             Connexion
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                         </svg>
-                    </div>
+                    </a>
                 {% endif %}
             </div>
         </div>

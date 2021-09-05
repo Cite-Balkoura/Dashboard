@@ -8,6 +8,8 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/mongodb-odm-bundle": "^4.3",
+        "knpuniversity/oauth2-client-bundle": "^2.8",
+        "romitou/oauth2-discord": "^1.0",
         "sensio/framework-extra-bundle": "^6.1",
         "symfony/asset": "5.3.*",
         "symfony/console": "5.3.*",
