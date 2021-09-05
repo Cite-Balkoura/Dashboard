@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}{% endblock %} | Grimtown</title>
+        {{ encore_entry_link_tags('app') }}
+    </head>
+    <body>
+    {% include 'elements/navbar.html.twig' %}
+    {% block content %}
+    {% endblock %}
+    </body>
+    <script>
+        function toggleUserDropdown() {
+            const userDropdown = document.getElementById('userDropdown');
+            if (userDropdown.classList.contains('hidden'))
+                userDropdown.classList.remove('hidden');
+            else
+                userDropdown.classList.add('hidden');
+        }
+
+        function toggleMobileDropdown() {
+            const mobileDropdown = document.getElementById('mobileDropdown');
+            if (mobileDropdown.classList.contains('hidden'))
+                mobileDropdown.classList.remove('hidden');
+            else
+                mobileDropdown.classList.add('hidden');
+        }
+    </script>
+    {{ encore_entry_script_tags('app') }}
+</html>
