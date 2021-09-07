@@ -16,18 +16,21 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\PassportInterface;
 use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPassport;
+use Twig\Environment;
 
 class DiscordAuthenticator extends OAuth2Authenticator
 {
     private ClientRegistry $clientRegistry;
     private DocumentManager $dm;
     private RouterInterface $router;
+    private Environment $twig;
 
-    public function __construct(ClientRegistry $clientRegistry, DocumentManager $entityManager, RouterInterface $router)
+    public function __construct(ClientRegistry $clientRegistry, DocumentManager $entityManager, RouterInterface $router, Environment $twig)
     {
         $this->clientRegistry = $clientRegistry;
         $this->dm = $entityManager;
         $this->router = $router;
+        $this->twig = $twig;
     }
 
     public function supports(Request $request): ?bool
@@ -73,7 +76,8 @@ class DiscordAuthenticator extends OAuth2Authenticator
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
     {
-        $message = strtr($exception->getMessageKey(), $exception->getMessageData());
-        return new Response($message, Response::HTTP_FORBIDDEN);
+        return new Response($this->twig->render('auth/error.html.twig', [
+            'deniedAccess' => 'access_denied' == $request->query->get('error')
+        ]));
     }
 }

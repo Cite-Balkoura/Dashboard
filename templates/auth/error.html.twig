@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Erreur{% endblock %}
+
+{% block content %}
+    <div class="sm:mt-16 px-6 py-5 flex flex-col justify-center content-center">
+        <div class="flex justify-center content-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </div>
+        <div class="flex sm:justify-center content-center text-red-500 text-lg font-grimtown font-medium">
+            {% if deniedAccess %}
+                Il semblerait que vous avez abandonné l'authentification.
+            {% else %}
+                Oups, quelque chose ne s'est pas passé comme prévu.
+            {% endif %}
+        </div>
+        <div class="flex mt-3 sm:justify-center content-center text-gray-900 text-sm font-raleway">
+            <div class="max-w-xl">
+            {% if deniedAccess %}
+                Afin de vous créer un compte personnel sur Cap sur Grimtown, nous vous authentifions par le biais de Discord. Ce moyen d'authentification est le plus pratique et le plus rapide pour les utilisateurs. Si vous souhaitez plus d'informations, n'hésitez pas à nous contacter.
+            {% else %}
+                Un petit soucis est survenu lors de votre authentification via Discord. N'hésitez pas à <a href="{{ path('login') }}">réessayer</a> ou à nous contacter si le problème persiste.
+            {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
