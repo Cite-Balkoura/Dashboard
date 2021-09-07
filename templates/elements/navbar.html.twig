@@ -1,5 +1,5 @@
 <nav class="bg-gray-900 shadow-lg">
-    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-2">
         <div class="relative flex items-center justify-between h-16">
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false" onclick="toggleMobileDropdown()">
@@ -12,49 +12,57 @@
 
             <div class="flex-1 flex items-center sm:items-stretch w-full justify-center">
                 <div class="block sm:hidden">
-                    <img src="/static/logo.png" class="h-14" data-tilt data-tilt-scale="1.1" alt="Logo de Grimtown">
+                    <img src="/static/logo.png" class="h-12" data-tilt data-tilt-scale="1.1" alt="Logo de Grimtown">
                 </div>
-                <div class="hidden sm:block sm:ml-6">
+                <div class="hidden sm:block">
                     <div class="flex justify-center">
-                        <a href="{{ path('index') }}" class="flex items-center text-white px-3 py-2 mx-4 text-sm font-grimtown font-medium transform hover:scale-105 transition-transform ease-in duration-200">
+                        <a href="{{ path('index') }}" class="flex items-center text-white px-3 py-2 lg:mx-4 text-sm font-grimtown font-medium transform hover:scale-105 transition-transform ease-in duration-200">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                             </svg>
-                            Accueil
+                            <div class="lg:block hidden">
+                                Accueil
+                            </div>
                         </a>
-                        <a href="#" class="flex text-white px-3 py-2 mx-4 text-sm font-grimtown font-medium transform hover:scale-105 transition-transform ease-in duration-200">
+                        <a href="#" class="flex text-white px-3 py-2 lg:mx-4 text-sm font-grimtown font-medium transform hover:scale-105 transition-transform ease-in duration-200">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                             </svg>
-                            Événements
+                            <div class="lg:block hidden">
+                                Événements
+                            </div>
                         </a>
                         <a class="flex-shrink-0 w-8 mx-16 flex items-center">
                             <a class="absolute w-24" href="{{ path('index') }}">
                                 <img src="/static/logo.png" data-tilt data-tilt-scale="1.1" alt="Logo de Grimtown">
                             </a>
                         </a>
-                        <a href="#" class="flex text-white px-3 py-2 mx-4 text-sm font-grimtown font-medium transform hover:scale-105 transition-transform ease-in duration-200">
+                        <a href="#" class="flex text-white px-3 py-2 lg:mx-4 text-sm font-grimtown font-medium transform hover:scale-105 transition-transform ease-in duration-200">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
-                            Calendrier
+                            <div class="lg:block hidden">
+                                Calendrier
+                            </div>
                         </a>
-                        <a href="#" class="flex text-white px-3 py-2 mx-4 text-sm font-grimtown font-medium transform hover:scale-105 transition-transform ease-in duration-200">
+                        <a href="#" class="flex text-white px-3 py-2 lg:mx-4 text-sm font-grimtown font-medium transform hover:scale-105 transition-transform ease-in duration-200">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
                             </svg>
-                            Actualités
+                            <div class="lg:block hidden">
+                                Actualités
+                            </div>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <div class="absolute right-0 flex items-center pr-2">
                 {% if app.user %}
                     <div class="ml-3 relative">
                         <div>
                             <button type="button" class="flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true" onclick="toggleUserDropdown()">
                                 <span class="sr-only">Ouvrir le menu utilisateur</span>
-                                <a class="sm:block hidden flex text-white text-sm font-grimtown font-medium mr-2">
+                                <a class="lg:block hidden flex text-white text-sm font-grimtown font-medium mr-2">
                                     {{ app.user.username }}
                                 </a>
                                 <img class="h-8 w-8 rounded-full" src="{{ app.user.avatarUrl }}" alt="">
@@ -68,7 +76,7 @@
                     </div>
                 {% else %}
                     <a href="{{ path('login') }}" class="flex text-white text-sm font-grimtown font-medium items-center transform hover:translate-x-1 transition-transform ease-in duration-200">
-                        <div class="sm:block hidden">
+                        <div class="lg:block hidden">
                             Connexion
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">

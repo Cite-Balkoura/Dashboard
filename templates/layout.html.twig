@@ -7,9 +7,11 @@
         {{ encore_entry_link_tags('app') }}
     </head>
     <body>
-    {% include 'elements/navbar.html.twig' %}
-    {% block content %}
-    {% endblock %}
+    <div class="flex flex-col h-screen">
+        {% include 'elements/navbar.html.twig' %}
+        {% block content %}
+        {% endblock %}
+    </div>
     </body>
     <script>
         function toggleUserDropdown() {
