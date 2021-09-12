@@ -60,6 +60,7 @@ class DiscordAuthenticator extends OAuth2Authenticator
                 $user->setUsername($resourceOwner->getCompleteUsername());
                 $user->setAvatarUrl($resourceOwner->getAvatarUrl('.webp'));
                 $user->setDiscordId($resourceOwner->getId());
+                $user->setEmail($resourceOwner->getEmail());
 
                 $this->dm->persist($user);
                 $this->dm->flush();

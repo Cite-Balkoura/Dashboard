@@ -20,6 +20,6 @@ class IndexController extends AbstractController
     #[Route('login', name: 'login')]
     public function login(ClientRegistry $clientRegistry): RedirectResponse
     {
-        return $clientRegistry->getClient('discord')->redirect();
+        return $clientRegistry->getClient('discord')->redirect(['identify', 'email']);
     }
 }
