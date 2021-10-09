@@ -5,14 +5,14 @@
 {% block content %}
     <div class="flex-grow justify-center content-center">
         {% if nextEvent is defined %}
-        <div class="flex bg-no-repeat bg-center bg-cover background-main h-80 w-full overflow-hidden">
+        <div class="flex bg-no-repeat bg-center bg-cover h-80 w-full overflow-hidden" style="background-image: url('{{ nextEvent.imageUrl|escape }}');">
             <div class="flex flex-col w-full bg-gray-200 p-6">
                 <h2 class="font-bold text-gray-900 uppercase mb-1 font-grimtown text-2xl text-center my-2">Notre prochain événement :</h2>
                 <h1 class="font-bold text-yellow-600 uppercase mb-1 font-grimtown text-4xl text-center my-2">{{ nextEvent.title }}</h1>
                 <p class="font-raleway mt-8 overflow-y-auto"> {{ nextEvent.shortDescription }}</p>
             </div>
             <div class="md:flex md:w-full text-white hidden">
-                <svg viewBox="0 0 40 100" xmlns="http://www.w3.org/2000/svg" style="fill: rgba(229,231,235)">
+                <svg viewBox="0 0 40 100" xmlns="http://www.w3.org/2000/svg" style="fill: rgb(229, 231, 235)">
                     <polygon points="0 0, 0 100, 40 0"/>
                 </svg>
             </div>
