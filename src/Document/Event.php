@@ -8,7 +8,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 /**
  * Class Event
  * @package App\Document
- * @MongoDB\Document(collection="events")
+ * @MongoDB\Document(collection="events", repositoryClass="App\Repository\EventRepository")
  */
 class Event
 {
