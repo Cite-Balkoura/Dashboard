@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\EventRepository;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -12,9 +13,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class IndexController extends AbstractController
 {
     #[Route('', name: 'index')]
-    public function index(): Response
+    public function index(EventRepository $eventRepository): Response
     {
-        return $this->render('index.html.twig');
+        return $this->render('index.html.twig', [
+            'nextEvent' => $eventRepository->findNextEvent()
+        ]);
     }
 
     #[Route('login', name: 'login')]

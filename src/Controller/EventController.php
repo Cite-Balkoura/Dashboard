@@ -2,20 +2,19 @@
 
 namespace App\Controller;
 
-use App\Document\Event;
-use Doctrine\ODM\MongoDB\DocumentManager;
+use App\Repository\EventRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/events')]
-class EventsController extends AbstractController
+class EventController extends AbstractController
 {
     #[Route('', name: 'events')]
-    public function index(DocumentManager $dm): Response
+    public function index(EventRepository $eventRepository): Response
     {
         return $this->render('events/index.html.twig', [
-            'events' => $dm->getRepository(Event::class)->findAll()
+            'events' => $eventRepository->findAll()
         ]);
     }
 }
