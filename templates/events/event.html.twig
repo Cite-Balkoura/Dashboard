@@ -3,28 +3,42 @@
 {% block title %}{{ event.title }}{% endblock %}
 
 {% block content %}
-    <div class="flex-grow justify-center content-center">
-        <div class="flex-col w-full overflow-hidden h-3/4 bg-no-repeat bg-center bg-cover" style="background-image: url('{{ event.imageUrl }}');">
+    <div class="flex-col w-full">
+        <div class="flex-col bg-no-repeat bg-center bg-cover" style="background-image: url('{{ event.imageUrl }}'); height: 35rem;">
             <div class="flex h-5/6 w-full items-center justify-center">
-                <h1 class="text-yellow-400 text-5xl font-grimtown font-extrabold uppercase">{{ event.title }}</h1>
+                <h1 class="text-yellow-400 text-5xl font-grimtown font-extrabold uppercase" data-tilt data-tilt-scale="1.2">{{ event.title }}</h1>
             </div>
             <div class="flex h-1/6 w-full justify-center">
-                <div class="flex absolute">
-                    <div class="flex w-1/2 mx-3">
-                        <a href="#introduction" class="flex shadow-xl  bg-yellow-600 text-white items-center font-bold py-2 px-4 -translate-y-1/4 rounded transform hover:scale-105 transition-transform ease-in duration-200">
-                            Présentation
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 13l-5 5m0 0l-5-5m5 5V6"></path>
-                            </svg>
-                        </a>
+                <div class="flex-col absolute items-center justify-center">
+                    <div class="flex items-center justify-center">
+                        <div class="flex w-1/2 items-center justify-center">
+                            <a href="#introduction" class="flex w-full mx-4 shadow-xl bg-yellow-600 text-white items-center justify-center font-bold py-2 px-4 -translate-y-1/4 rounded transform hover:scale-105 transition-transform ease-in duration-200">
+                                Présentation
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 13l-5 5m0 0l-5-5m5 5V6"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="flex w-1/2 items-center justify-center">
+                            <a href="#registration" class="flex w-full mx-4 shadow-xl bg-yellow-600 text-white items-center justify-center font-bold py-2 px-4 -translate-y-1/4 rounded transform hover:scale-105 transition-transform ease-in duration-200">
+                                Inscription
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 13l-5 5m0 0l-5-5m5 5V6"></path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
-                    <div class="flex w-1/2 mx-3">
-                        <a href="#registation" class="flex shadow-xl bg-yellow-600 text-white items-center font-bold py-2 px-4 -translate-y-1/4 rounded transform hover:scale-105 transition-transform ease-in duration-200">
-                            Inscription
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 13l-5 5m0 0l-5-5m5 5V6"></path>
-                            </svg>
-                        </a>
+                    <div class="flex h-16 bg-yellow-50 p-3 rounded-lg justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="text-yellow-400 h-full w-auto" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <div id="{{ event.id }}.days" class="flex w-14 md:w-16 whitespace-nowrap ml-4 h-full px-2 bg-yellow-400 text-white text-xl font-grimtown rounded-lg justify-center items-center">{{ countdown[0] }}</div>
+                        <div class="ml-2 font-grimtown font-medium text-yellow-400">:</div>
+                        <div id="{{ event.id }}.hours" class="flex w-14 md:w-16 whitespace-nowrap ml-2 h-full px-2 bg-yellow-400 text-white text-xl font-grimtown rounded-lg justify-center items-center">{{ countdown[1] }}</div>
+                        <div class="ml-2 font-grimtown font-medium text-yellow-400">:</div>
+                        <div id="{{ event.id }}.minutes" class="flex w-16 md:w-20 whitespace-nowrap ml-2 h-full px-2 bg-yellow-400 text-white text-xl font-grimtown rounded-lg justify-center items-center">{{ countdown[2] }}</div>
+                        <div class="ml-2 font-grimtown font-medium text-yellow-400">:</div>
+                        <div id="{{ event.id }}.seconds" class="flex w-14 md:w-16 whitespace-nowrap ml-2 h-full px-2 bg-yellow-400 text-white text-xl font-grimtown rounded-lg justify-center items-center">{{ countdown[3] }}</div>
                     </div>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-full w-full mt-1" fill="white" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -32,21 +46,20 @@
                 </svg>
             </div>
         </div>
-        <div class="flex w-full justify-center items-center">
-            <div class="flex h-16 bg-yellow-50 p-3 rounded-lg justify-center items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="text-yellow-400 h-full w-auto" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <div id="{{ event.id }}.days" class="flex whitespace-nowrap ml-4 h-full px-2 bg-yellow-400 text-white text-xl font-grimtown rounded-lg justify-center items-center">{{ countdown[0] }}</div>
-                <div class="ml-2 font-grimtown font-medium text-yellow-400">:</div>
-                <div id="{{ event.id }}.hours" class="flex whitespace-nowrap ml-2 h-full px-2 bg-yellow-400 text-white text-xl font-grimtown rounded-lg justify-center items-center">{{ countdown[1] }}</div>
-                <div class="ml-2 font-grimtown font-medium text-yellow-400">:</div>
-                <div id="{{ event.id }}.minutes" class="flex whitespace-nowrap ml-2 h-full px-2 bg-yellow-400 text-white text-xl font-grimtown rounded-lg justify-center items-center">{{ countdown[2] }}</div>
-                <div class="ml-2 font-grimtown font-medium text-yellow-400">:</div>
-                <div id="{{ event.id }}.seconds" class="flex whitespace-nowrap ml-2 h-full px-2 bg-yellow-400 text-white text-xl font-grimtown rounded-lg justify-center items-center">{{ countdown[3] }}</div>
+        <div id="introduction" class="mt-10 w-2/3 mx-auto py-10">
+            <h2 class="text-center font-grimtown text-3xl font-bold text-gray-900 uppercase">Présentation</h2>
+            <p class="mt-10 text-gray-900 font-raleway">{{ event.shortDescription }}</p>
+        </div>
+        <div class="bg-gray-900">
+            <div class="w-2/3 mx-auto py-10">
+                <h2 class="text-center font-grimtown text-3xl font-bold text-white uppercase">Calendrier</h2>
+                <p class="mt-5 text-white font-raleway">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut malesuada urna. Morbi eget est ultrices dolor posuere placerat ac at leo. Duis nec quam vel est sodales pellentesque id nec leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin blandit ipsum at tellus placerat, in cursus eros gravida. Proin ullamcorper orci quam, sed gravida lacus vestibulum nec. Nam semper tempor vestibulum. Maecenas eget massa vitae eros mattis faucibus. Morbi nec sollicitudin metus. Fusce dictum, dolor eu dignissim eleifend, velit nunc pulvinar libero, quis ultricies enim mauris quis felis. Aliquam consequat, mi eu tincidunt porttitor, enim massa consectetur orci, placerat auctor diam risus eu erat. Nam tellus justo, venenatis vel ligula ut, dictum fringilla turpis. Donec ultrices efficitur turpis imperdiet consectetur. Vestibulum a nisl non ex feugiat elementum. Ut lacinia molestie maximus. Vivamus pharetra dictum dui quis ultricies.</p>
             </div>
         </div>
-
+        <div id="registration" class="w-2/3 mx-auto py-10">
+            <h2 class="text-center font-grimtown text-3xl font-bold text-gray-900 uppercase">Inscription</h2>
+            <p class="mt-5 text-gray-900 font-raleway">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut malesuada urna. Morbi eget est ultrices dolor posuere placerat ac at leo. Duis nec quam vel est sodales pellentesque id nec leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin blandit ipsum at tellus placerat, in cursus eros gravida. Proin ullamcorper orci quam, sed gravida lacus vestibulum nec. Nam semper tempor vestibulum. Maecenas eget massa vitae eros mattis faucibus. Morbi nec sollicitudin metus. Fusce dictum, dolor eu dignissim eleifend, velit nunc pulvinar libero, quis ultricies enim mauris quis felis. Aliquam consequat, mi eu tincidunt porttitor, enim massa consectetur orci, placerat auctor diam risus eu erat. Nam tellus justo, venenatis vel ligula ut, dictum fringilla turpis. Donec ultrices efficitur turpis imperdiet consectetur. Vestibulum a nisl non ex feugiat elementum. Ut lacinia molestie maximus. Vivamus pharetra dictum dui quis ultricies.</p>
+        </div>
         <script>window.onload = () => window.countdown.start("{{ event.id }}", "{{ event.startDate|date }}")</script>
     </div>
 {% endblock %}
