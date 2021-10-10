@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\EventRepository;
+use App\Utils\TimeUtils;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -15,8 +16,10 @@ class IndexController extends AbstractController
     #[Route('', name: 'index')]
     public function index(EventRepository $eventRepository): Response
     {
+        $nextEvent = $eventRepository->findNextEvent();
         return $this->render('index.html.twig', [
-            'nextEvent' => $eventRepository->findNextEvent()
+            'nextEvent' => $nextEvent,
+            'countdown' => TimeUtils::getCountdownValues($nextEvent->getStartDate())
         ]);
     }
 

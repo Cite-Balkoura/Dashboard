@@ -24,13 +24,13 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="text-white h-full w-auto" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <div id="{{ nextEvent.id }}.days" class="flex whitespace-nowrap ml-4 h-full px-2 bg-white text-yellow-400 text-xl font-grimtown rounded-lg justify-center items-center">0</div>
+                <div id="{{ nextEvent.id }}.days" class="flex whitespace-nowrap ml-4 h-full px-2 bg-white text-yellow-400 text-xl font-grimtown rounded-lg justify-center items-center">{{ countdown[0] }}</div>
                 <div class="ml-2 font-grimtown font-medium text-white">:</div>
-                <div id="{{ nextEvent.id }}.hours" class="flex whitespace-nowrap ml-2 h-full px-2 bg-white text-yellow-400 text-xl font-grimtown rounded-lg justify-center items-center">0</div>
+                <div id="{{ nextEvent.id }}.hours" class="flex whitespace-nowrap ml-2 h-full px-2 bg-white text-yellow-400 text-xl font-grimtown rounded-lg justify-center items-center">{{ countdown[1] }}</div>
                 <div class="ml-2 font-grimtown font-medium text-white">:</div>
-                <div id="{{ nextEvent.id }}.minutes" class="flex whitespace-nowrap ml-2 h-full px-2 bg-white text-yellow-400 text-xl font-grimtown rounded-lg justify-center items-center">0</div>
+                <div id="{{ nextEvent.id }}.minutes" class="flex whitespace-nowrap ml-2 h-full px-2 bg-white text-yellow-400 text-xl font-grimtown rounded-lg justify-center items-center">{{ countdown[2] }}</div>
                 <div class="ml-2 font-grimtown font-medium text-white">:</div>
-                <div id="{{ nextEvent.id }}.seconds" class="flex whitespace-nowrap ml-2 h-full px-2 bg-white text-yellow-400 text-xl font-grimtown rounded-lg justify-center items-center">0</div>
+                <div id="{{ nextEvent.id }}.seconds" class="flex whitespace-nowrap ml-2 h-full px-2 bg-white text-yellow-400 text-xl font-grimtown rounded-lg justify-center items-center">{{ countdown[3] }}</div>
             </div>
             <div class="flex h-full md:w-1/2 bg-yellow-600 justify-center md:justify-between md:pl-20">
                 <div></div>

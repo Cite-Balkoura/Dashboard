@@ -37,15 +37,16 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="text-yellow-400 h-full w-auto" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
-                <div id="613e6d1096b3a1867c53ebca.days" class="flex whitespace-nowrap ml-4 h-full px-2 bg-yellow-400 text-white text-xl font-grimtown rounded-lg justify-center items-center">70 j</div>
+                <div id="{{ event.id }}.days" class="flex whitespace-nowrap ml-4 h-full px-2 bg-yellow-400 text-white text-xl font-grimtown rounded-lg justify-center items-center">{{ countdown[0] }}</div>
                 <div class="ml-2 font-grimtown font-medium text-yellow-400">:</div>
-                <div id="613e6d1096b3a1867c53ebca.hours" class="flex whitespace-nowrap ml-2 h-full px-2 bg-yellow-400 text-white text-xl font-grimtown rounded-lg justify-center items-center">9 h</div>
+                <div id="{{ event.id }}.hours" class="flex whitespace-nowrap ml-2 h-full px-2 bg-yellow-400 text-white text-xl font-grimtown rounded-lg justify-center items-center">{{ countdown[1] }}</div>
                 <div class="ml-2 font-grimtown font-medium text-yellow-400">:</div>
-                <div id="613e6d1096b3a1867c53ebca.minutes" class="flex whitespace-nowrap ml-2 h-full px-2 bg-yellow-400 text-white text-xl font-grimtown rounded-lg justify-center items-center">32 min</div>
+                <div id="{{ event.id }}.minutes" class="flex whitespace-nowrap ml-2 h-full px-2 bg-yellow-400 text-white text-xl font-grimtown rounded-lg justify-center items-center">{{ countdown[2] }}</div>
                 <div class="ml-2 font-grimtown font-medium text-yellow-400">:</div>
-                <div id="613e6d1096b3a1867c53ebca.seconds" class="flex whitespace-nowrap ml-2 h-full px-2 bg-yellow-400 text-white text-xl font-grimtown rounded-lg justify-center items-center">39 s</div>
+                <div id="{{ event.id }}.seconds" class="flex whitespace-nowrap ml-2 h-full px-2 bg-yellow-400 text-white text-xl font-grimtown rounded-lg justify-center items-center">{{ countdown[3] }}</div>
             </div>
         </div>
+
         <script>window.onload = () => window.countdown.start("{{ event.id }}", "{{ event.startDate|date }}")</script>
     </div>
 {% endblock %}
