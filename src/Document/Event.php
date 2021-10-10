@@ -26,6 +26,11 @@ class Event
     /**
      * @MongoDB\Field(type="string")
      */
+    private string $slug;
+
+    /**
+     * @MongoDB\Field(type="string")
+     */
     private string $shortDescription;
 
     /**
@@ -73,6 +78,22 @@ class Event
     public function setTitle(string $title): void
     {
         $this->title = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug(): string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug(string $slug): void
+    {
+        $this->slug = $slug;
     }
 
     /**
