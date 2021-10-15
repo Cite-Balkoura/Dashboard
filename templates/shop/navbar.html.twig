@@ -1,0 +1,33 @@
+<nav class="bg-white shadow-lg h-16 w-full">
+    <div class="max-w-7xl mx-auto px-2">
+        <div class="flex justify-between h-16">
+            <div class="flex-1 flex items-center items-stretch w-full justify-between">
+                <div class="flex w-1/2 sm:w-5/12 h-full justify-between overflow-x-auto mx-2">
+                    {% for category in categories %}
+                    <a href="{{ path('shop_category', { slug: category.slug }) }}" class="flex items-center text-gray-900 px-3 py-2 lg:mx-4 text-sm font-grimtown font-medium border-b-2 {% if app.request.pathinfo == '/shop/category/' ~ category.slug %}border-yellow-500{% endif %} border-white hover:border-yellow-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 sm:h-6 w-auto mr-2" fill="none" stroke="currentColor" viewBox="0 0 576 512"><path fill="currentColor" d="{{ category.svg }}" class=""></path></svg>
+                        <div class="lg:block hidden">
+                            {{ category.name }}
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+                <div class="flex w-1/2 sm:w-5/12 h-full justify-between overflow-x-auto mx-2">
+                    <a href="" class="flex items-center text-gray-900 px-3 py-2 lg:mx-4 text-sm font-grimtown font-medium border-b-2 border-white hover:border-yellow-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 sm:h-6 w-auto mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 15.536c-1.171 1.952-3.07 1.952-4.242 0-1.172-1.953-1.172-5.119 0-7.072 1.171-1.952 3.07-1.952 4.242 0M8 10.5h4m-4 3h4m9-1.5a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div class="lg:block hidden mr-1">
+                            Solde :
+                        </div>
+                        0,00 €
+                    </a>
+                    <a href="" class="flex items-center text-white bg-yellow-600 rounded-lg px-3 py-1 my-3 lg:mx-4 text-sm font-grimtown font-medium text-center transition duration-200 hover:bg-yellow-400 transform hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 sm:h-6 w-auto mr-2" fill="none" stroke="currentColor" viewBox="0 0 576 512"><path fill="currentColor" d="M564 192h-72.902L362.286 40.457c-8.583-10.099-23.729-11.327-33.83-2.743-10.099 8.584-11.327 23.731-2.742 33.83L428.102 192H147.899L250.287 71.543c8.584-10.099 7.356-25.246-2.743-33.83s-25.246-7.355-33.83 2.743L84.901 192H12c-6.627 0-12 5.373-12 12v24c0 6.627 5.373 12 12 12h18.667l27.584 198.603C61.546 462.334 81.836 480 105.794 480h364.412c23.958 0 44.248-17.666 47.544-41.397L545.333 240H564c6.627 0 12-5.373 12-12v-24c0-6.627-5.373-12-12-12zm-93.794 240H105.794L79.127 240h417.745l-26.666 192zM312 296v80c0 13.255-10.745 24-24 24s-24-10.745-24-24v-80c0-13.255 10.745-24 24-24s24 10.745 24 24zm112 0v80c0 13.255-10.745 24-24 24s-24-10.745-24-24v-80c0-13.255 10.745-24 24-24s24 10.745 24 24zm-224 0v80c0 13.255-10.745 24-24 24s-24-10.745-24-24v-80c0-13.255 10.745-24 24-24s24 10.745 24 24z" class=""></path></svg>
+                        <div class="w-full">0,00 €</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
