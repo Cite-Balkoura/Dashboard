@@ -41,7 +41,8 @@ class ShopController extends AbstractController
     public function category(string $slug, ShopItemRepository $shopItemRepository): Response
     {
         return $this->render('shop/category.html.twig', [
-            'categories' => $this->getCategories()
+            'categories' => $this->getCategories(),
+            'items' => $shopItemRepository->getByCategorySlug($slug)
         ]);
     }
 

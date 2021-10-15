@@ -3,7 +3,15 @@
 {% block title %}Boutique{% endblock %}
 
 {% block content %}
-    <div class="flex flex-grow h-full w-full">
+    <div class="flex-col h-full w-full">
         {% include 'shop/navbar.html.twig' %}
+        <div class="flex px-60 w-full">
+            <div class="flex w-full">
+                <div class="flex w-3/4 bg-yellow-400 h-full">
+
+                </div>
+                {% include 'shop/sidebar.html.twig' %}
+            </div>
+        </div>
     </div>
 {% endblock %}
