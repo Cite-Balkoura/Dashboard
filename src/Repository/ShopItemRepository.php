@@ -23,7 +23,7 @@ class ShopItemRepository extends ServiceDocumentRepository
             ->field('slug')->equals($slug)
             ->sort('position')
             ->getQuery()
-            ->execute();
+            ->toArray();
     }
 
     public function getByCategorySlug(string $slug): array
@@ -36,6 +36,6 @@ class ShopItemRepository extends ServiceDocumentRepository
             ->field('category')->equals($category)
             ->sort('position')
             ->getQuery()
-            ->execute();
+            ->toArray();
     }
 }
