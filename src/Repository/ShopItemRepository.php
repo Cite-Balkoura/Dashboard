@@ -17,13 +17,13 @@ class ShopItemRepository extends ServiceDocumentRepository
         parent::__construct($registry, ShopItem::class);
     }
 
-    public function getBySlug(string $slug): array
+    public function getBySlug(string $slug): ?ShopItem
     {
         return $this->createQueryBuilder()
             ->field('slug')->equals($slug)
             ->sort('position')
             ->getQuery()
-            ->toArray();
+            ->getSingleResult();
     }
 
     public function getByCategorySlug(string $slug): array
