@@ -4,9 +4,11 @@
 
 {% block content %}
     <div class="flex-col w-full">
-        <div class="flex-col bg-no-repeat bg-center bg-cover" style="background-image: url('{{ event.imageUrl }}'); height: 35rem;">
+        <div class="flex-col bg-no-repeat bg-center bg-cover" style="background-image: url('{{ event.largeBanner == null ? event.banner : event.largeBanner }}'); height: 35rem;">
             <div class="flex h-5/6 w-full items-center justify-center">
-                <h1 class="text-yellow-400 text-5xl font-grimtown font-extrabold uppercase" data-tilt data-tilt-scale="1.2">{{ event.title }}</h1>
+                {% if event.largeBanner is null %}
+                    <h1 class="text-yellow-400 text-5xl font-grimtown font-extrabold uppercase" data-tilt data-tilt-scale="1.2">{{ event.title }}</h1>
+                {% endif %}
             </div>
             <div class="flex h-1/6 w-full justify-center">
                 <div class="flex-col absolute items-center justify-center">
@@ -48,17 +50,19 @@
         </div>
         <div id="introduction" class="mt-10 w-2/3 mx-auto py-10">
             <h2 class="text-center font-grimtown text-3xl font-bold text-gray-900 uppercase">Présentation</h2>
-            <p class="mt-10 text-gray-900 font-raleway">{{ event.shortDescription }}</p>
+            <p class="mt-10 text-gray-900 font-raleway">{{ event.description }}</p>
         </div>
-        <div class="bg-gray-900">
-            <div class="w-2/3 mx-auto py-10">
-                <h2 class="text-center font-grimtown text-3xl font-bold text-white uppercase">Calendrier</h2>
-                <p class="mt-5 text-white font-raleway">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut malesuada urna. Morbi eget est ultrices dolor posuere placerat ac at leo. Duis nec quam vel est sodales pellentesque id nec leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin blandit ipsum at tellus placerat, in cursus eros gravida. Proin ullamcorper orci quam, sed gravida lacus vestibulum nec. Nam semper tempor vestibulum. Maecenas eget massa vitae eros mattis faucibus. Morbi nec sollicitudin metus. Fusce dictum, dolor eu dignissim eleifend, velit nunc pulvinar libero, quis ultricies enim mauris quis felis. Aliquam consequat, mi eu tincidunt porttitor, enim massa consectetur orci, placerat auctor diam risus eu erat. Nam tellus justo, venenatis vel ligula ut, dictum fringilla turpis. Donec ultrices efficitur turpis imperdiet consectetur. Vestibulum a nisl non ex feugiat elementum. Ut lacinia molestie maximus. Vivamus pharetra dictum dui quis ultricies.</p>
+        {% if event.calendar is not null %}
+            <div class="bg-gray-900">
+                <div class="w-2/3 mx-auto py-10">
+                    <h2 class="text-center font-grimtown text-3xl font-bold text-white uppercase">Calendrier</h2>
+                    <p class="mt-10 text-gray-900 font-raleway">{{ event.calendar }}</p>
+                </div>
             </div>
-        </div>
+        {% endif %}
         <div id="registration" class="w-2/3 mx-auto py-10">
             <h2 class="text-center font-grimtown text-3xl font-bold text-gray-900 uppercase">Inscription</h2>
-            <p class="mt-5 text-gray-900 font-raleway">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut malesuada urna. Morbi eget est ultrices dolor posuere placerat ac at leo. Duis nec quam vel est sodales pellentesque id nec leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin blandit ipsum at tellus placerat, in cursus eros gravida. Proin ullamcorper orci quam, sed gravida lacus vestibulum nec. Nam semper tempor vestibulum. Maecenas eget massa vitae eros mattis faucibus. Morbi nec sollicitudin metus. Fusce dictum, dolor eu dignissim eleifend, velit nunc pulvinar libero, quis ultricies enim mauris quis felis. Aliquam consequat, mi eu tincidunt porttitor, enim massa consectetur orci, placerat auctor diam risus eu erat. Nam tellus justo, venenatis vel ligula ut, dictum fringilla turpis. Donec ultrices efficitur turpis imperdiet consectetur. Vestibulum a nisl non ex feugiat elementum. Ut lacinia molestie maximus. Vivamus pharetra dictum dui quis ultricies.</p>
+            <p class="mt-10 text-gray-900 font-raleway">{{ event.registration }}</p>
         </div>
         <script>window.onload = () => window.countdown.start("{{ event.id }}", "{{ event.startDate|date }}")</script>
     </div>

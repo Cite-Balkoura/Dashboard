@@ -13,7 +13,7 @@
                     <p class="font-raleway mt-8 overflow-y-auto">{{ nextEvent.shortDescription }}</p>
                 </div>
             </div>
-            <div class="md:flex md:w-full text-white hidden bg-no-repeat bg-center bg-cover pr-20" style="background-image: url('{{ nextEvent.imageUrl|escape }}');">
+            <div class="md:flex md:w-full text-white hidden bg-no-repeat bg-center bg-cover pr-20" style="background-image: url('{{ nextEvent.banner|escape }}');">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 40 100">
                     <polygon points="0 0, 0 100, 40 0"/>
                 </svg>
@@ -51,9 +51,16 @@
         </div>
         <script>window.onload = () => window.countdown.start("{{ nextEvent.id }}", "{{ nextEvent.startDate|date }}")</script>
         {% endif %}
-    <div class="flex h-80 w-full overflow-hidden bg-gray-900">
+    <div class="flex w-full overflow-hidden bg-gray-900" style="height: 50rem;">
+        <div class="w-2/3 mx-auto py-10">
+            <h2 class="text-center font-grimtown text-3xl font-bold text-white uppercase">Nos événements</h2>
+            <div class="bg-no-repeat bg-center bg-cover h-5/6 mt-10 rounded-xl" style="background-image: url('https://cdn.discordapp.com/attachments/838091328658341888/900402805955772416/Calendar_2021.png');"></div>
+        </div>
     </div>
-    <div class="flex h-80 w-full overflow-hidden bg-white">
+    <div class="flex w-full overflow-hidden bg-white" style="height: 50rem;">
+        <div class="w-2/3 mx-auto py-10">
+            <h2 class="text-center font-grimtown text-3xl font-bold text-gray-900 uppercase">Nos partenaires</h2>
+        </div>
     </div>
     </div>
 {% endblock %}

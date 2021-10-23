@@ -36,7 +36,27 @@ class Event
     /**
      * @MongoDB\Field(type="string")
      */
-    private string $imageUrl;
+    private string $description;
+
+    /**
+     * @MongoDB\Field(type="string")
+     */
+    private ?string $calendar = null;
+
+    /**
+     * @MongoDB\Field(type="string")
+     */
+    private string $banner;
+
+    /**
+     * @MongoDB\Field(type="string")
+     */
+    private ?string $largeBanner = null;
+
+    /**
+     * @MongoDB\Field(type="string")
+     */
+    private string $registration;
 
     /**
      * @MongoDB\Field(type="date")
@@ -115,17 +135,81 @@ class Event
     /**
      * @return string
      */
-    public function getImageUrl(): string
+    public function getDescription(): string
     {
-        return $this->imageUrl;
+        return $this->description;
     }
 
     /**
-     * @param string $imageUrl
+     * @param string $description
      */
-    public function setImageUrl(string $imageUrl): void
+    public function setDescription(string $description): void
     {
-        $this->imageUrl = $imageUrl;
+        $this->description = $description;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCalendar(): ?string
+    {
+        return $this->calendar;
+    }
+
+    /**
+     * @param string|null $calendar
+     */
+    public function setCalendar(?string $calendar): void
+    {
+        $this->calendar = $calendar;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBanner(): string
+    {
+        return $this->banner;
+    }
+
+    /**
+     * @param string $banner
+     */
+    public function setBanner(string $banner): void
+    {
+        $this->banner = $banner;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLargeBanner(): ?string
+    {
+        return $this->largeBanner;
+    }
+
+    /**
+     * @param string|null $largeBanner
+     */
+    public function setLargeBanner(?string $largeBanner): void
+    {
+        $this->largeBanner = $largeBanner;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRegistration(): string
+    {
+        return $this->registration;
+    }
+
+    /**
+     * @param string $registration
+     */
+    public function setRegistration(string $registration): void
+    {
+        $this->registration = $registration;
     }
 
     /**
