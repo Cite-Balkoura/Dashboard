@@ -1,0 +1,70 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ item.name }}{% endblock %}
+
+{% block content %}
+    <div class="flex-col w-full">
+        {% include 'shop/navbar.html.twig' with { requestCategory: item.category.id } %}
+        <div class="flex container mx-auto py-10 w-full">
+            <div class="w-full">
+                <div class="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
+                    {% for image in item.images %}
+                    <div class="sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4 {% if not loop.first %}hidden lg:block{% endif %}">
+                        <img src="{{ image }}" alt="Model wearing plain white basic tee." class="w-full h-full object-center object-cover">
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
+                    <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+                        <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
+                            {{ item.name }}
+                        </h1>
+                    </div>
+                    <div class="mt-4 lg:mt-0 lg:row-span-3">
+                        <h2 class="sr-only">Informations du produit</h2>
+                        <p class="text-3xl text-gray-900">{{ item.price }} €</p>
+                        <div class="mt-4 space-y-6">
+                            <p class="text-sm text-gray-600">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget elit in massa sollicitudin finibus at eget magna. Donec enim turpis, cursus a justo et, placerat aliquam mauris. Proin in purus euismod, tempor lacus commodo, aliquet ex. Sed scelerisque, urna eu dignissim laoreet, orci massa faucibus mauris, sed euismod mi justo vel dui. Pellentesque dapibus velit et magna mollis euismod. Curabitur auctor vel dui in semper. Suspendisse rhoncus ante elit, ut volutpat sem placerat ac. Aenean porttitor, odio at sollicitudin efficitur, elit magna egestas lacus, sed tempus sem libero id massa. Nunc mattis arcu eu ornare venenatis. Sed et lacus orci. Morbi sit amet feugiat lorem. Vestibulum a nibh vel lacus fermentum ullamcorper ac at quam. Donec vel mauris gravida, pellentesque lectus at, pellentesque eros. Sed maximus erat in sapien blandit, ac vulputate est feugiat. Aliquam erat volutpat. Donec sit amet malesuada nisi, ultrices posuere eros.
+                            </p>
+                        </div>
+                        <button type="submit" class="mt-10 w-full bg-yellow-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400">
+                            Ajouter au panier
+                        </button>
+                    </div>
+                    <div class="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+                        <div>
+                            <h3 class="sr-only">Description</h3>
+
+                            <div class="space-y-6">
+                                <p class="text-base text-gray-900">
+                                    {{ item.description }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-10">
+                            <h3 class="text-sm font-medium text-gray-900">Avantages</h3>
+                            <div class="mt-4">
+                                <ul role="list" class="pl-4 list-disc text-sm space-y-2">
+                                    <li class="text-gray-400"><span class="text-gray-600">1</span></li>
+
+                                    <li class="text-gray-400"><span class="text-gray-600">2</span></li>
+
+                                    <li class="text-gray-400"><span class="text-gray-600">3</span></li>
+
+                                    <li class="text-gray-400"><span class="text-gray-600">4</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-10">
+                            <h2 class="text-sm font-medium text-gray-900">Détails</h2>
+                            <div class="mt-4 space-y-6">
+                                <p class="text-sm text-gray-600">Maecenas porttitor auctor quam sit amet ornare. Nam condimentum urna dolor, id cursus lacus auctor in. Curabitur egestas pharetra ipsum. Cras gravida accumsan magna non vehicula. Mauris ullamcorper massa nec nunc faucibus condimentum. Curabitur commodo ex sit amet elit euismod auctor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut vestibulum velit a sem molestie, ac molestie arcu eleifend. Quisque ornare condimentum nulla, mollis volutpat enim finibus eget. Aenean facilisis luctus tellus non scelerisque. Fusce ut mauris dui. Nam quis dui nec ligula congue commodo vitae vitae turpis. Duis ut sapien ex. In suscipit, eros quis vulputate rhoncus, arcu nisi vulputate nibh, varius condimentum ligula metus sit amet neque.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
