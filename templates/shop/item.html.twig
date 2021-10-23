@@ -28,9 +28,10 @@
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget elit in massa sollicitudin finibus at eget magna. Donec enim turpis, cursus a justo et, placerat aliquam mauris. Proin in purus euismod, tempor lacus commodo, aliquet ex. Sed scelerisque, urna eu dignissim laoreet, orci massa faucibus mauris, sed euismod mi justo vel dui. Pellentesque dapibus velit et magna mollis euismod. Curabitur auctor vel dui in semper. Suspendisse rhoncus ante elit, ut volutpat sem placerat ac. Aenean porttitor, odio at sollicitudin efficitur, elit magna egestas lacus, sed tempus sem libero id massa. Nunc mattis arcu eu ornare venenatis. Sed et lacus orci. Morbi sit amet feugiat lorem. Vestibulum a nibh vel lacus fermentum ullamcorper ac at quam. Donec vel mauris gravida, pellentesque lectus at, pellentesque eros. Sed maximus erat in sapien blandit, ac vulputate est feugiat. Aliquam erat volutpat. Donec sit amet malesuada nisi, ultrices posuere eros.
                             </p>
                         </div>
-                        <button type="submit" class="mt-10 w-full bg-yellow-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400">
-                            Ajouter au panier
-                        </button>
+                        {{ form_start(form) }}
+                        {{ form_widget(form.quantity, {'attr': {'class': 'mt-6 h-8 w-full rounded border-gray-300 shadow-sm focus:border-gray-300 focus:ring focus:ring-gray-200 focus:ring-opacity-50', 'placeholder': 'Quantité'}}) }}
+                        {{ form_widget(form.add, {'attr': {'class': 'mt-2 w-full bg-yellow-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400'}}) }}
+                        {{ form_end(form) }}
                     </div>
                     <div class="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
                         <div>

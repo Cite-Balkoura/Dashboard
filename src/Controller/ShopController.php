@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Form\AddToCartType;
+use App\Manager\OrderManager;
 use App\Repository\ShopCategoryRepository;
 use App\Repository\ShopItemRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,10 +14,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class ShopController extends AbstractController
 {
     private ShopCategoryRepository $shopCategoryRepository;
+    private OrderManager $orderManager;
 
-    public function __construct(ShopCategoryRepository $shopCategoryRepository)
+    public function __construct(ShopCategoryRepository $shopCategoryRepository, OrderManager $orderManager)
     {
         $this->shopCategoryRepository = $shopCategoryRepository;
+        $this->orderManager = $orderManager;
     }
 
     private function getCategories(): array
@@ -27,16 +31,20 @@ class ShopController extends AbstractController
     public function index(): Response
     {
         return $this->render('shop/index.html.twig', [
-            'categories' => $this->getCategories()
+            'categories' => $this->getCategories(),
+            'order' => $this->orderManager->getCurrent()
         ]);
     }
 
     #[Route('/item/{slug}', name: 'shop_item')]
     public function item(string $slug, ShopItemRepository $shopItemRepository): Response
     {
+        $form = $this->createForm(AddToCartType::class);
         return $this->render('shop/item.html.twig', [
             'categories' => $this->getCategories(),
-            'item' => $shopItemRepository->getBySlug($slug)
+            'order' => $this->orderManager->getCurrent(),
+            'item' => $shopItemRepository->getBySlug($slug),
+            'form' => $form->createView()
         ]);
     }
 
@@ -45,6 +53,7 @@ class ShopController extends AbstractController
     {
         return $this->render('shop/category.html.twig', [
             'categories' => $this->getCategories(),
+            'order' => $this->orderManager->getCurrent(),
             'items' => $shopItemRepository->getByCategorySlug($slug)
         ]);
     }
@@ -54,6 +63,7 @@ class ShopController extends AbstractController
     {
         return $this->render('shop/checkout.html.twig', [
             'categories' => $this->getCategories(),
+            'order' => $this->orderManager->getCurrent()
         ]);
     }
 
