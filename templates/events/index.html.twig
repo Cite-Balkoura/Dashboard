@@ -7,35 +7,39 @@
         <div class="sm:mt-16 sm:px-12 py-6 h-full w-full">
             <div class="p-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {% for event in events %}
-                    <div class="relative bg-white pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden transform hover:scale-105 transition-transform ease-in duration-200">
+                    <div class="relative pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow-xl rounded-lg overflow-hidden bg-no-repeat bg-center bg-opacity-25 bg-cover text-white" style="background-image: url('{{ event.banner|escape }}');">
                         <div>
-                            <div class="absolute bg-gray-700 rounded-md h-12 w-12 px-4 py-3">
-                                <img class="h-full w-auto" src="{{ event.imageUrl }}">
-                            </div>
-                            <p class="ml-16 text-xl font-grimtown font-medium text-gray-900">
+                            <p class="text-3xl font-grimtown font-bold uppercase">
                                 {{ event.title }}
                             </p>
                         </div>
-                        <div class="ml-16 pb-6 flex flex-wrap items-baseline sm:pb-7">
-                            <p class="text-sm font-medium font-raleway text-gray-900">
+                        <div class="pb-6 flex flex-wrap items-baseline sm:pb-7">
+                            <p class="text-sm font-medium font-raleway">
                                 {{ event.shortDescription }}
                             </p>
-                            <div class="absolute bottom-0 inset-x-0 bg-gray-700 text-white">
+                            <div class="absolute bottom-0 inset-x-0 text-white">
                                 <div class="flex flex-row">
-                                    <div class="flex w-full bg-gray-700 border-r-2 border-gray-500 px-4 py-4 content-center justify-center">
+                                    <div class="flex w-1/2 bg-yellow-400 px-4 py-4 h-14 content-center justify-center">
                                         <div class="text-white h-6 w-6">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                             </svg>
                                         </div>
-                                        <div class="ml-2 font-grimtown font-medium text-white hidden lg:block">Décollage dans </div>
-                                        <div id="{{ event.id }}.days" class="ml-2 h-6 px-2 bg-gray-500 text-white rounded-lg text-center">0</div>
+                                        <div id="{{ event.id }}.days" class="ml-2 h-6 px-2 bg-white text-yellow-400 rounded-lg text-center">0</div>
                                         <div class="ml-1 font-grimtown font-medium">:</div>
-                                        <div id="{{ event.id }}.hours" class="ml-1 h-6 px-2 bg-gray-500 text-white rounded-lg text-center">0</div>
+                                        <div id="{{ event.id }}.hours" class="ml-1 h-6 px-2 bg-white text-yellow-400 rounded-lg text-center">0</div>
                                         <div class="ml-1 font-grimtown font-medium">:</div>
-                                        <div id="{{ event.id }}.minutes" class="ml-1 h-6 px-2 bg-gray-500 text-white rounded-lg text-center">0</div>
+                                        <div id="{{ event.id }}.minutes" class="ml-1 h-6 px-2 bg-white text-yellow-400 rounded-lg text-center">0</div>
                                         <div class="ml-1 font-grimtown font-medium">:</div>
-                                        <div id="{{ event.id }}.seconds" class="ml-1 h-6 px-2 bg-gray-500 text-white rounded-lg text-center">0</div>
+                                        <div id="{{ event.id }}.seconds" class="ml-1 h-6 px-2 bg-white text-yellow-400 rounded-lg text-center">0</div>
+                                    </div>
+                                    <div class="flex w-1/2 bg-yellow-400 px-2 py-3 h-14 content-center justify-center">
+                                        <a href="{{ path('event', { slug: event.slug }) }}" class="flex bg-white text-yellow-600 items-center px-4 font-bold h-full rounded transform hover:scale-105 transition-transform ease-in duration-200">
+                                            En savoir plus
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                            </svg>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -46,27 +50,10 @@
         </div>
     </div>
     <script>
-        const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
-        function startTimer(eventId, date) {
-            const countdown = new Date(date).getTime();
-
-            const days = document.getElementById(eventId + ".days"),
-                hours = document.getElementById(eventId + ".hours"),
-                minutes = document.getElementById(eventId + ".minutes"),
-                seconds = document.getElementById(eventId + ".seconds");
-
-            setInterval(() => {
-                const distance = countdown - new Date().getTime();
-                days.innerText = Math.floor(distance / (day)).toString() + " j";
-                hours.innerText = Math.floor((distance % (day)) / (hour)).toString() + " h";
-                minutes.innerText = Math.floor((distance % (hour)) / (minute)).toString() + " min";
-                seconds.innerText = Math.floor((distance % (minute)) / second).toString() + " s";
-            }, 1000);
-        }
-    </script>
-    <script>
-        {% for event in events %}
-            startTimer("{{ event.id }}", "{{ event.startDate|date }}");
-        {% endfor %}
+        window.onload = () => {
+            {% for event in events %}
+                window.countdown.start("{{ event.id }}", "{{ event.startDate|date }}")
+            {% endfor %}
+        };
     </script>
 {% endblock %}
