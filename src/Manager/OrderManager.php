@@ -3,6 +3,7 @@
 namespace App\Manager;
 
 use App\Document\ShopOrder;
+use App\Document\ShopOrderItem;
 use App\Repository\ShopOrderRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -35,9 +36,21 @@ class OrderManager
     public function create(): ShopOrder
     {
         $order = new ShopOrder();
+        $this->save($order);
+        return $order;
+    }
+
+    public function save(ShopOrder $order): void
+    {
         $this->repository->getDocumentManager()->persist($order);
         $this->repository->getDocumentManager()->flush();
         $this->session->set(CART_SESSION_ID, $order->getId());
-        return $order;
     }
+
+    public function saveOrderItem(ShopOrderItem $orderItem): void
+    {
+        $this->repository->getDocumentManager()->persist($orderItem);
+        $this->repository->getDocumentManager()->flush();
+    }
+
 }
