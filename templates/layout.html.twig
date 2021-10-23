@@ -18,6 +18,7 @@
         {% include 'elements/footer.html.twig' %}
     </div>
     </body>
+    {{ encore_entry_script_tags('app') }}
     <script>
         function toggleUserDropdown() {
             const userDropdown = document.getElementById('userDropdown');
@@ -35,5 +36,11 @@
                 mobileDropdown.classList.add('hidden');
         }
     </script>
-    {{ encore_entry_script_tags('app') }}
+    <script>
+        window.onload = () => {
+            {% for message in app.flashes('success') %}
+            window.Swal.fire('{{ message[0] }}', '{{ message[1] }}', 'success');
+            {% endfor %}
+        }
+    </script>
 </html>
