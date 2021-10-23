@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="flex-col h-full w-full">
-        {% include 'shop/navbar.html.twig' %}
+        {% include 'shop/navbar.html.twig' with { requestCategory: null } %}
         <div class="flex px-60 w-full">
             <div class="flex w-full">
                 <div class="flex w-3/4 bg-yellow-400 h-full">
