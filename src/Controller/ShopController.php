@@ -34,7 +34,10 @@ class ShopController extends AbstractController
     #[Route('/item/{slug}', name: 'shop_item')]
     public function item(string $slug, ShopItemRepository $shopItemRepository): Response
     {
-        return new Response();
+        return $this->render('shop/item.html.twig', [
+            'categories' => $this->getCategories(),
+            'item' => $shopItemRepository->getBySlug($slug)
+        ]);
     }
 
     #[Route('/category/{slug}', name: 'shop_category')]
@@ -43,6 +46,14 @@ class ShopController extends AbstractController
         return $this->render('shop/category.html.twig', [
             'categories' => $this->getCategories(),
             'items' => $shopItemRepository->getByCategorySlug($slug)
+        ]);
+    }
+
+    #[Route('/checkout', name: 'shop_checkout')]
+    public function checkout(): Response
+    {
+        return $this->render('shop/checkout.html.twig', [
+            'categories' => $this->getCategories(),
         ]);
     }
 
