@@ -4,6 +4,7 @@ namespace App\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 use JetBrains\PhpStorm\Pure;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class ShopOrderItem
@@ -24,8 +25,10 @@ class ShopOrderItem
 
     /**
      * @MongoDB\Field(type="integer")
+     * @Assert\NotBlank()
+     * @Assert\GreaterThanOrEqual(1)
      */
-    private int $quantity;
+    private int $quantity = 1;
 
     /**
      * @return string
