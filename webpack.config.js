@@ -1,7 +1,17 @@
 const Encore = require('@symfony/webpack-encore');
+const PurgeCssPlugin = require('purgecss-webpack-plugin');
+const glob = require('glob');
+const path = require('path');
 
 if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
+}
+
+if (Encore.isProduction()) {
+    Encore.addPlugin(new PurgeCssPlugin({
+        paths: glob.sync(path.join(__dirname, 'templates/**/*.html.twig')),
+        defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || []
+    }))
 }
 
 Encore
