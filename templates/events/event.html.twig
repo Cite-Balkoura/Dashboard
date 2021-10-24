@@ -4,10 +4,10 @@
 
 {% block content %}
     <div class="flex-col w-full">
-        <div class="flex-col bg-no-repeat bg-center bg-cover" style="background-image: url('{{ event.largeBanner == null ? event.banner : event.largeBanner }}'); height: 25rem;">
+        <div class="flex-col bg-no-repeat bg-center bg-cover" style="background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('{{ event.largeBanner == null ? event.banner : event.largeBanner }}'); height: 25rem;">
             <div class="flex h-5/6 w-full items-center justify-center">
                 {% if event.largeBanner is null %}
-                    <h1 class="text-yellow-400 text-5xl font-grimtown font-extrabold uppercase" data-tilt data-tilt-scale="1.2">{{ event.title }}</h1>
+                    <h1 class="text-white text-5xl font-grimtown font-extrabold uppercase" data-tilt data-tilt-scale="1.2">{{ event.title }}</h1>
                 {% endif %}
             </div>
             <div class="flex h-1/6 w-full justify-center">
