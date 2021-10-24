@@ -7,7 +7,7 @@
         <div class="sm:mt-16 sm:px-12 py-6 h-full w-full">
             <div class="p-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {% for event in events %}
-                    <div class="relative pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow-xl rounded-lg overflow-hidden bg-no-repeat bg-center bg-opacity-25 bg-cover text-white" style="background-image: url('{{ event.banner|escape }}');">
+                    <div class="relative pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow-xl rounded-lg overflow-hidden text-white" style="background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('{{ event.banner|escape }}');">
                         <div>
                             <p class="text-3xl font-grimtown font-bold uppercase">
                                 {{ event.title }}
