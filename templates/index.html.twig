@@ -5,7 +5,7 @@
 {% block content %}
     <div class="flex-grow justify-center content-center">
         {% if nextEvent is defined %}
-        <div class="flex w-full overflow-hidden h-96">
+        <div class="flex w-full h-96">
             <div class="flex w-full flex-col bg-white md:pl-20">
                 <div class="py-6 px-8">
                     <h2 class="font-bold text-gray-900 uppercase mb-1 font-grimtown text-2xl text-center my-2">Notre prochain événement :</h2>
@@ -21,7 +21,7 @@
         </div>
         <div class="md:flex flex-row-reverse h-16 w-full">
             <div class="flex h-full md:w-1/2 py-3 bg-yellow-400 justify-center items-center md:pr-20">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="text-white h-full w-auto" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="text-white h-full w-auto hidden md:block" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <div id="{{ nextEvent.id }}.days" class="flex whitespace-nowrap w-16 ml-4 h-full px-2 bg-white text-yellow-400 text-xl font-grimtown rounded-lg justify-center items-center">{{ countdown[0] }}</div>
@@ -30,7 +30,7 @@
                 <div class="ml-2 font-grimtown font-medium text-white">:</div>
                 <div id="{{ nextEvent.id }}.minutes" class="flex whitespace-nowrap w-20 ml-2 h-full px-2 bg-white text-yellow-400 text-xl font-grimtown rounded-lg justify-center items-center">{{ countdown[2] }}</div>
                 <div class="ml-2 font-grimtown font-medium text-white">:</div>
-                <div id="{{ nextEvent.id }}.seconds" class="flex whitespace-nowrap w-16 ml-2 h-full px-2 bg-white text-yellow-400 text-xl font-grimtown rounded-lg justify-center items-center">{{ countdown[3] }}</div>
+                <div id="{{ nextEvent.id }}.seconds" class="flex whitespace-nowrap w-16 ml-2 mr-2 h-full px-2 bg-white text-yellow-400 text-xl font-grimtown rounded-lg justify-center items-center">{{ countdown[3] }}</div>
             </div>
             <div class="flex h-full md:w-1/2 bg-yellow-600 justify-center md:justify-between md:pl-20">
                 <div></div>
@@ -50,22 +50,22 @@
             </div>
         </div>
         {% endif %}
-        <div class="flex w-full overflow-hidden bg-gray-900" style="height: 7rem;">
+        <div class="mt-16 md:mt-0 flex w-full overflow-hidden bg-gray-900">
             <div class="w-2/3 mx-auto py-10">
                 <div class="flex items-center justify-center">
                     <h2 class="text-center font-grimtown text-3xl font-bold text-white uppercase">
                         Nos événements
                     </h2>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="ml-3 h-8 w-auto text-white animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="ml-3 h-8 w-auto text-white animate-bounce hidden md:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                     </svg>
                 </div>
             </div>
         </div>
-        <img class="mt-16 md:mt-0" src="https://cdn.discordapp.com/attachments/838091328658341888/900402805955772416/Calendar_2021.png">
+        <img src="https://cdn.discordapp.com/attachments/838091328658341888/900402805955772416/Calendar_2021.png">
 
-        <div class="flex w-full overflow-hidden bg-gray-900" style="height: 7rem;">
-            <div class="w-2/3 mx-auto py-10">
+        <div class="flex w-full overflow-hidden bg-gray-900">
+            <div class="flex items-center justify-center lg:w-2/3 mx-auto py-5">
                 <div class="flex items-center justify-center">
                     <a href="{{ path('events') }}" class="flex bg-white text-gray-700 items-center font-bold py-3 px-6 rounded transform hover:scale-105 transition-transform ease-in duration-200">
                         Voir tous nos événements
@@ -76,11 +76,11 @@
                 </div>
             </div>
         </div>
-        <div class="flex w-full overflow-hidden bg-white" style="height: 50rem;">
-            <div class="w-2/3 mx-auto py-10">
-                <h2 class="text-center font-grimtown text-3xl font-bold text-gray-900 uppercase">Nos partenaires</h2>
-            </div>
-        </div>
+{#        <div class="flex w-full overflow-hidden bg-white" style="height: 50rem;">#}
+{#            <div class="w-2/3 mx-auto py-10">#}
+{#                <h2 class="text-center font-grimtown text-3xl font-bold text-gray-900 uppercase">Nos partenaires</h2>#}
+{#            </div>#}
+{#        </div>#}
     </div>
 {% endblock %}
 
