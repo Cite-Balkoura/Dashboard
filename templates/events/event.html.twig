@@ -64,6 +64,9 @@
             <h2 class="text-center font-grimtown text-3xl font-bold text-gray-900 uppercase">Inscription</h2>
             <p class="mt-10 text-gray-900 font-raleway">{{ event.registration|nl2br }}</p>
         </div>
-        <script>window.onload = () => window.countdown.start("{{ event.id }}", "{{ event.startDate|date }}")</script>
     </div>
+{% endblock %}
+
+{% block javascript %}
+    window.countdown.start("{{ event.id }}", "{{ event.startDate|date }}")
 {% endblock %}

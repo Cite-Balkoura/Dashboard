@@ -49,11 +49,10 @@
             </div>
         </div>
     </div>
-    <script>
-        window.onload = () => {
-            {% for event in events %}
-                window.countdown.start("{{ event.id }}", "{{ event.startDate|date }}")
-            {% endfor %}
-        };
-    </script>
+{% endblock %}
+
+{% block javascript %}
+    {% for event in events %}
+        window.countdown.start("{{ event.id }}", "{{ event.startDate|date }}")
+    {% endfor %}
 {% endblock %}

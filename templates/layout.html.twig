@@ -38,6 +38,8 @@
     </script>
     <script>
         window.onload = () => {
+            {% block javascript %}
+            {% endblock %}
             {% for message in app.flashes('success') %}
             window.Swal.fire('{{ message[0] }}', '{{ message[1] }}', 'success');
             {% endfor %}
