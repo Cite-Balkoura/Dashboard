@@ -51,16 +51,36 @@
         </div>
         <script>window.onload = () => window.countdown.start("{{ nextEvent.id }}", "{{ nextEvent.startDate|date }}")</script>
         {% endif %}
-    <div class="flex w-full overflow-hidden bg-gray-900" style="height: 50rem;">
-        <div class="w-2/3 mx-auto py-10">
-            <h2 class="text-center font-grimtown text-3xl font-bold text-white uppercase">Nos événements</h2>
-            <div class="bg-no-repeat bg-center bg-cover h-5/6 mt-10 rounded-xl" style="background-image: url('https://cdn.discordapp.com/attachments/838091328658341888/900402805955772416/Calendar_2021.png');"></div>
+        <div class="flex w-full overflow-hidden bg-gray-900" style="height: 7rem;">
+            <div class="w-2/3 mx-auto py-10">
+                <div class="flex items-center justify-center">
+                    <h2 class="text-center font-grimtown text-3xl font-bold text-white uppercase">
+                        Nos événements
+                    </h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="ml-3 h-8 w-auto text-white animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="flex w-full overflow-hidden bg-white" style="height: 50rem;">
-        <div class="w-2/3 mx-auto py-10">
-            <h2 class="text-center font-grimtown text-3xl font-bold text-gray-900 uppercase">Nos partenaires</h2>
+        <img class="mt-16 md:mt-0" src="https://cdn.discordapp.com/attachments/838091328658341888/900402805955772416/Calendar_2021.png">
+
+        <div class="flex w-full overflow-hidden bg-gray-900" style="height: 7rem;">
+            <div class="w-2/3 mx-auto py-10">
+                <div class="flex items-center justify-center">
+                    <a href="{{ path('events') }}" class="flex bg-white text-gray-700 items-center font-bold py-3 px-6 rounded transform hover:scale-105 transition-transform ease-in duration-200">
+                        Voir tous nos événements
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="flex w-full overflow-hidden bg-white" style="height: 50rem;">
+            <div class="w-2/3 mx-auto py-10">
+                <h2 class="text-center font-grimtown text-3xl font-bold text-gray-900 uppercase">Nos partenaires</h2>
+            </div>
+        </div>
     </div>
 {% endblock %}
