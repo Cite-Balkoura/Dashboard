@@ -59,6 +59,11 @@ class Event
     private string $registration;
 
     /**
+     * @MongoDB\Field(type="bool")
+     */
+    private bool $acceptRegistration;
+
+    /**
      * @MongoDB\Field(type="date")
      */
     private DateTime $startDate;
@@ -210,6 +215,22 @@ class Event
     public function setRegistration(string $registration): void
     {
         $this->registration = $registration;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAcceptRegistration(): bool
+    {
+        return $this->acceptRegistration;
+    }
+
+    /**
+     * @param bool $acceptRegistration
+     */
+    public function setAcceptRegistration(bool $acceptRegistration): void
+    {
+        $this->acceptRegistration = $acceptRegistration;
     }
 
     /**
