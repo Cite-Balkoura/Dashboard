@@ -26,7 +26,7 @@ class ShopOrder
     private Collection $items;
 
     /**
-     * @MongoDB\Field(type="integer")
+     * @MongoDB\Field(type="int")
      */
     private int $status = self::ORDER_PENDING;
 

@@ -24,7 +24,7 @@ class ShopOrderItem
     private ShopItem $item;
 
     /**
-     * @MongoDB\Field(type="integer")
+     * @MongoDB\Field(type="int")
      * @Assert\NotBlank()
      * @Assert\GreaterThanOrEqual(1)
      */

@@ -5,6 +5,7 @@ namespace App\Manager;
 use App\Document\ShopOrder;
 use App\Document\ShopOrderItem;
 use App\Repository\ShopOrderRepository;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 const CART_SESSION_ID = "cart_id";
@@ -14,9 +15,9 @@ class OrderManager
     private SessionInterface $session;
     private ShopOrderRepository $repository;
 
-    public function __construct(SessionInterface $session, ShopOrderRepository $repository)
+    public function __construct(RequestStack $requestStack, ShopOrderRepository $repository)
     {
-        $this->session = $session;
+        $this->session = $requestStack->getSession();
         $this->repository = $repository;
     }
 
