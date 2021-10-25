@@ -2,4 +2,4 @@ connect_discord_check:
     path: /auth/callback
 
 logout:
-    path: /logout
+    path: /auth/logout
