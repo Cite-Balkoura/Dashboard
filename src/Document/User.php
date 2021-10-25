@@ -34,11 +34,6 @@ class User implements UserInterface
     private string $username;
 
     /**
-     * @MongoDB\Field(type="string")
-     */
-    private string $email;
-
-    /**
      * @MongoDB\Field(type="collection")
      */
     private array $roles = [];
@@ -97,22 +92,6 @@ class User implements UserInterface
     public function setAvatarUrl(string $avatarUrl): void
     {
         $this->avatarUrl = $avatarUrl;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEmail(): string
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param string $email
-     */
-    public function setEmail(string $email): void
-    {
-        $this->email = $email;
     }
 
     public function getRoles(): array
