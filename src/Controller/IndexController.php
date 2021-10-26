@@ -23,6 +23,12 @@ class IndexController extends AbstractController
         ]);
     }
 
+    #[Route('discord', name: 'discord')]
+    public function discord(): Response
+    {
+        return new RedirectResponse('https://discord.gg/EURQxhFam5');
+    }
+
     #[Route('login', name: 'login')]
     public function login(ClientRegistry $clientRegistry): RedirectResponse
     {

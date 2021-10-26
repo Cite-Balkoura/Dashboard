@@ -23,12 +23,12 @@ class Participation
     private string $_t = "Participation";
 
     /**
-     * @MongoDB\ReferenceOne(storeAs="id")
+     * @MongoDB\ReferenceOne(storeAs="id", targetDocument="Profile::class")
      */
     private Profile $profile;
 
     /**
-     * @MongoDB\ReferenceOne(storeAs="id")
+     * @MongoDB\ReferenceOne(storeAs="id", targetDocument="Event::class")
      */
     private Event $event;
 }
