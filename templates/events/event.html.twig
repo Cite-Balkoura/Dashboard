@@ -22,12 +22,21 @@
                             </a>
                         </div>
                         <div class="flex w-1/2 items-center justify-center">
-                            <a href="#registration" class="flex w-full mx-4 shadow-xl bg-yellow-600 text-white items-center justify-center font-bold py-2 px-4 -translate-y-1/4 rounded transform hover:scale-105 transition-transform ease-in duration-200">
+                            {% if event.acceptRegistration %}
+                            <a href="#registration" class="flex w-full mx-4 shadow-xl bg-green-600 text-white items-center justify-center font-bold py-2 px-4 -translate-y-1/4 rounded transform hover:scale-105 transition-transform ease-in duration-200">
                                 Inscription
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 13l-5 5m0 0l-5-5m5 5V6"></path>
                                 </svg>
                             </a>
+                            {% else %}
+                                <div class="flex w-full mx-4 bg-gray-300 text-white items-center justify-center font-bold py-2 px-4 -translate-y-1/4 rounded transform">
+                                    Inscription
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 13l-5 5m0 0l-5-5m5 5V6"></path>
+                                    </svg>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="flex h-16 bg-yellow-50 p-3 rounded-lg justify-center items-center">
@@ -52,17 +61,42 @@
             <h2 class="text-center font-grimtown text-3xl font-bold text-gray-900 uppercase">Présentation</h2>
             <p class="mt-10 text-gray-900 font-raleway">{{ event.description|nl2br|raw }}</p>
         </div>
-        {% if event.calendar is not null %}
-            <div class="bg-gray-900">
-                <div class="w-2/3 mx-auto py-10">
-                    <h2 class="text-center font-grimtown text-3xl font-bold text-white uppercase">Calendrier</h2>
-                    <p class="mt-10 text-gray-900 font-raleway">{{ event.calendar|nl2br|raw }}</p>
-                </div>
+        <div class="bg-gray-700">
+            <div class="w-2/3 mx-auto py-10">
+                <h2 class="text-center font-grimtown text-3xl font-bold text-white uppercase">Histoire</h2>
+                <p class="mt-10 text-white font-raleway">{{ event.story|nl2br|raw }}</p>
             </div>
-        {% endif %}
+        </div>
+        <div id="introduction" class="w-2/3 mx-auto py-10">
+            <h2 class="text-center font-grimtown text-3xl font-bold text-gray-900 uppercase">But du jeu</h2>
+            <p class="mt-10 text-gray-900 font-raleway">{{ event.goal|nl2br|raw }}</p>
+        </div>
+        <div class="bg-gray-700">
+            <div class="w-2/3 mx-auto py-10">
+                <h2 class="text-center font-grimtown text-3xl font-bold text-white uppercase">Règles</h2>
+                <p class="mt-10 text-white font-raleway">{{ event.rules|nl2br|raw }}</p>
+            </div>
+        </div>
         <div id="registration" class="w-2/3 mx-auto py-10">
             <h2 class="text-center font-grimtown text-3xl font-bold text-gray-900 uppercase">Inscription</h2>
-            <p class="mt-10 text-gray-900 font-raleway">{{ event.registration|nl2br|raw }}</p>
+            <p class="my-10 text-gray-900 font-raleway">{{ event.registration|nl2br|raw }}</p>
+            <div class="flex items-center justify-center">
+                {% if event.acceptRegistration %}
+                <a href="" class="flex mx-4 shadow-xl bg-green-600 text-white items-center justify-center font-bold py-2 px-4 rounded transform hover:scale-105 transition-transform ease-in duration-200">
+                    S'inscrire à cet événement
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                </a>
+                {% else %}
+                    <a href="" class="flex mx-4 bg-gray-200 text-white items-center justify-center font-bold py-2 px-4 rounded">
+                        S'inscrire à cet événement
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </a>
+                {% endif %}
+            </div>
         </div>
     </div>
 {% endblock %}

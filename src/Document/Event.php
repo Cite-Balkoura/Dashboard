@@ -41,6 +41,26 @@ class Event
     /**
      * @MongoDB\Field(type="string")
      */
+    private string $story;
+
+    /**
+     * @MongoDB\Field(type="string")
+     */
+    private string $goal;
+
+    /**
+     * @MongoDB\Field(type="string")
+     */
+    private string $cashprize;
+
+    /**
+     * @MongoDB\Field(type="string")
+     */
+    private string $rules;
+
+    /**
+     * @MongoDB\Field(type="string")
+     */
     private ?string $calendar = null;
 
     /**
@@ -61,7 +81,7 @@ class Event
     /**
      * @MongoDB\Field(type="bool")
      */
-    private bool $acceptRegistration;
+    private bool $acceptRegistration = false;
 
     /**
      * @MongoDB\Field(type="date")
@@ -151,6 +171,70 @@ class Event
     public function setDescription(string $description): void
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStory(): string
+    {
+        return $this->story;
+    }
+
+    /**
+     * @param string $story
+     */
+    public function setStory(string $story): void
+    {
+        $this->story = $story;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGoal(): string
+    {
+        return $this->goal;
+    }
+
+    /**
+     * @param string $goal
+     */
+    public function setGoal(string $goal): void
+    {
+        $this->goal = $goal;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCashprize(): string
+    {
+        return $this->cashprize;
+    }
+
+    /**
+     * @param string $cashprize
+     */
+    public function setCashprize(string $cashprize): void
+    {
+        $this->cashprize = $cashprize;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRules(): string
+    {
+        return $this->rules;
+    }
+
+    /**
+     * @param string $rules
+     */
+    public function setRules(string $rules): void
+    {
+        $this->rules = $rules;
     }
 
     /**
