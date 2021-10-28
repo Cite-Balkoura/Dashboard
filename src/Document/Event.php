@@ -19,7 +19,7 @@ class Event
     private string $id;
 
     /**
-     * @MongoDB\ReferenceOne(storeAs="id", targetDocument="App\Document\Common\Event")
+     * @MongoDB\ReferenceOne(storeAs="id", targetDocument="App\Document\Common\Event", type="string")
      */
     private string $commonId;
 
@@ -112,6 +112,22 @@ class Event
     public function setId(string $id): void
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCommonId(): string
+    {
+        return $this->commonId;
+    }
+
+    /**
+     * @param string $commonId
+     */
+    public function setCommonId(string $commonId): void
+    {
+        $this->commonId = $commonId;
     }
 
     /**

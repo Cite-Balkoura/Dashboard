@@ -82,12 +82,24 @@
             <p class="my-10 text-gray-900 font-raleway">{{ event.registration|nl2br|raw }}</p>
             <div class="flex items-center justify-center">
                 {% if event.acceptRegistration %}
-                <a href="" class="flex mx-4 shadow-xl bg-green-600 text-white items-center justify-center font-bold py-2 px-4 rounded transform hover:scale-105 transition-transform ease-in duration-200">
-                    S'inscrire à cet événement
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                </a>
+                    {% if is_granted('ROLE_USER') %}
+                    <form action="{{ path('eventRegister', { slug: event.slug }) }}" method="post">
+                        <input type="hidden" name="token" value="{{ csrf_token('register-event-' ~ event.id) }}"/>
+                        <button type="submit" class="flex mx-4 shadow-xl bg-green-600 text-white items-center justify-center font-bold py-2 px-4 rounded transform hover:scale-105 transition-transform ease-in duration-200">
+                            S'inscrire à cet événement
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </button>
+                    </form>
+                    {% else %}
+                        <a href="{{ path('register') }}" class="flex mx-4 shadow-xl bg-green-600 text-white items-center justify-center font-bold py-2 px-4 rounded transform hover:scale-105 transition-transform ease-in duration-200">
+                            Comment m'inscrire à cet événement ?
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </a>
+                    {% endif %}
                 {% else %}
                     <a href="" class="flex mx-4 bg-gray-200 text-white items-center justify-center font-bold py-2 px-4 rounded">
                         S'inscrire à cet événement
