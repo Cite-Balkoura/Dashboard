@@ -116,7 +116,7 @@
                     <p class="text-gray-900 font-raleway">Sélectionnez les événements auxquels vous souhaitez participer. Vous pouvez consulter désormais vous inscrire et consulter le statut de vos inscriptions directement sur la page de nos événements.</p>
 
                     {% if (is_granted('ROLE_USER')) and (profile is not null) %}
-                        <a href="{{ path('events') }}" class="flex animate-pulse mt-5 shadow-xl bg-green-500 text-white items-center justify-center font-bold py-2 px-8 rounded transform hover:scale-105 transition-transform ease-in duration-200">
+                        <a href="{{ path('events') }}" class="flex animate-pulse mt-5 shadow-xl bg-green-700 text-white items-center justify-center font-bold py-2 px-8 rounded transform hover:scale-105 transition-transform ease-in duration-200">
                             Voir tous nos événements
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />

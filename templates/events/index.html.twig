@@ -5,43 +5,69 @@
 {% block content %}
     <div class="bg-no-repeat bg-center bg-cover background-main flex flex-grow flex-col">
         <div class="sm:mt-16 sm:px-12 py-6 h-full w-full">
-            <div class="p-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="p-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {% for event in events %}
-                    <div class="relative pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow-xl rounded-lg overflow-hidden text-white" style="background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('{{ event.banner|escape }}');">
-                        <div>
-                            <p class="text-3xl font-grimtown font-bold uppercase">
-                                {{ event.title }}
-                            </p>
+                    <div class="shadow-xl rounded-lg">
+                        <div class="pt-5 px-4 pb-12 sm:pt-6 sm:px-6 text-white rounded-t-lg" style="background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('{{ event.banner|escape }}');">
+                            <div>
+                                <p class="text-3xl font-grimtown font-bold uppercase">
+                                    {{ event.title }}
+                                </p>
+                            </div>
+                            <div class="pb-6 flex flex-wrap items-baseline sm:pb-7">
+                                <p class="text-sm font-medium font-raleway">
+                                    {{ event.shortDescription }}
+                                </p>
+                            </div>
                         </div>
-                        <div class="pb-6 flex flex-wrap items-baseline sm:pb-7">
-                            <p class="text-sm font-medium font-raleway">
-                                {{ event.shortDescription }}
-                            </p>
-                            <div class="absolute bottom-0 inset-x-0 text-white">
-                                <div class="flex flex-row">
-                                    <div class="flex w-1/2 bg-yellow-400 px-4 py-4 h-14 content-center justify-center">
-                                        <div class="text-white h-6 w-6">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                            </svg>
-                                        </div>
-                                        <div id="{{ event.id }}.days" class="ml-2 h-6 px-2 bg-white text-yellow-400 rounded-lg text-center">0</div>
-                                        <div class="ml-1 font-grimtown font-medium">:</div>
-                                        <div id="{{ event.id }}.hours" class="ml-1 h-6 px-2 bg-white text-yellow-400 rounded-lg text-center">0</div>
-                                        <div class="ml-1 font-grimtown font-medium">:</div>
-                                        <div id="{{ event.id }}.minutes" class="ml-1 h-6 px-2 bg-white text-yellow-400 rounded-lg text-center">0</div>
-                                        <div class="ml-1 font-grimtown font-medium">:</div>
-                                        <div id="{{ event.id }}.seconds" class="ml-1 h-6 px-2 bg-white text-yellow-400 rounded-lg text-center">0</div>
-                                    </div>
-                                    <div class="flex w-1/2 bg-yellow-400 px-2 py-3 h-14 content-center justify-center">
-                                        <a href="{{ path('event', { slug: event.slug }) }}" class="flex bg-white text-yellow-600 items-center px-4 font-bold h-full rounded text-xs lg:text-base transform hover:scale-105 transition-transform ease-in duration-200">
-                                            En savoir plus
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                            </svg>
-                                        </a>
-                                    </div>
+                        <div class="flex flex-row rounded-b-lg items-center justify-center">
+                            <div class="flex bg-yellow-400 w-full px-4 py-4 h-14 content-center justify-center text-white">
+                                <div class="h-6 w-6">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
                                 </div>
+                                <div id="{{ event.id }}.days" class="ml-2 h-6 px-3 bg-white text-yellow-400 rounded-lg text-center">0</div>
+                                <div class="ml-1 font-grimtown font-medium">:</div>
+                                <div id="{{ event.id }}.hours" class="ml-1 h-6 px-3 bg-white text-yellow-400 rounded-lg text-center">0</div>
+                                <div class="ml-1 font-grimtown font-medium">:</div>
+                                <div id="{{ event.id }}.minutes" class="ml-1 h-6 px-3 bg-white text-yellow-400 rounded-lg text-center">0</div>
+                                <div class="ml-1 font-grimtown font-medium">:</div>
+                                <div id="{{ event.id }}.seconds" class="ml-1 h-6 px-3 bg-white text-yellow-400 rounded-lg text-center">0</div>
+                            </div>
+                        </div>
+                        <div class="flex flex-row">
+                            <div class="flex w-2/5 items-center justify-center">
+                                {% if (not event.acceptRegistration) or (not canRegister) %}
+                                    <div class="flex rounded-bl-lg bg-white w-full text-gray-600 px-4 py-4 h-14 items-center justify-center font-raleway border-r-2 border-gray-200">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        Inscriptions fermées
+                                    </div>
+                                {% elseif event.id in participations %}
+                                    <div class="flex rounded-bl-lg bg-white w-full text-green-600 px-4 py-4 h-14 items-center justify-center font-raleway border-r-2 border-gray-200">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                        Inscrit
+                                    </div>
+                                {% elseif canRegister %}
+                                    <div class="flex rounded-bl-lg bg-white w-full text-red-600 px-4 py-4 h-14 items-center justify-center font-raleway border-r-2 border-gray-200">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        Non inscrit
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="flex w-3/5 bg-white px-2 py-3 h-14 content-center justify-center text-white rounded-br-lg">
+                                <a href="{{ path('event', { slug: event.slug }) }}" class="flex bg-white text-yellow-600 items-center px-4 font-bold h-full rounded text-xs lg:text-base transform hover:scale-105 transition-transform ease-in duration-200">
+                                    En savoir plus {% if canRegister and event.acceptRegistration %} et s'inscrire{% endif %}
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </div>
