@@ -19,6 +19,11 @@ class Event
     private string $id;
 
     /**
+     * @MongoDB\ReferenceOne(storeAs="id", targetDocument="App\Document\Common\Event")
+     */
+    private string $commonId;
+
+    /**
      * @MongoDB\Field(type="string")
      */
     private string $title;
