@@ -7,6 +7,7 @@ use App\Utils\TimeUtils;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -30,8 +31,11 @@ class IndexController extends AbstractController
     }
 
     #[Route('login', name: 'login')]
-    public function login(ClientRegistry $clientRegistry): RedirectResponse
+    public function login(ClientRegistry $clientRegistry, Request $request): RedirectResponse
     {
+        if (($redirect = $request->query->getAlpha('redirect')) == 'register') {
+            $request->getSession()->set('redirect', $this->generateUrl($redirect));
+        }
         return $clientRegistry->getClient('discord')->redirect(['identify']);
     }
 }

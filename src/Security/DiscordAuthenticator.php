@@ -71,6 +71,10 @@ class DiscordAuthenticator extends OAuth2Authenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
+        if ($redirect = $request->getSession()->get('redirect')) {
+            $request->getSession()->set('redirect', null);
+            return new RedirectResponse($redirect);
+        }
         return new RedirectResponse($this->router->generate('index'));
     }
 
