@@ -21,7 +21,7 @@ class ParticipationRepository extends ServiceDocumentRepository
             ->toArray();
     }
 
-    public function getParticipation(string $profileId, string $eventId): Participation
+    public function getParticipation(string $profileId, string $eventId): ?Participation
     {
         return $this->createQueryBuilder()
             ->field('profile')->equals($profileId)
