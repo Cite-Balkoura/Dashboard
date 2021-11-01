@@ -9,6 +9,7 @@
         "ext-iconv": "*",
         "doctrine/mongodb-odm-bundle": "^4.3",
         "knpuniversity/oauth2-client-bundle": "^2.8",
+        "php-amqplib/rabbitmq-bundle": "^2.10",
         "romitou/oauth2-discord": "^1.0",
         "sensio/framework-extra-bundle": "^6.2",
         "symfony/asset": "5.3.*",

@@ -1,0 +1,10 @@
+old_sound_rabbit_mq:
+    connections:
+        default:
+            url: '%env(RABBITMQ_URL)%'
+    producers:
+        # use 'old_sound_rabbit_mq.task_producer' service to send data.
+        bot_input:
+            connection:       default
+            exchange_options: { name: 'bot-input', type: direct }
+            service_alias: bot_input
