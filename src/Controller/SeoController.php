@@ -33,22 +33,22 @@ class SeoController extends AbstractController
         $urls = [
             [
                 'loc' => $this->generateUrl('index'),
-                'changefreq' => 'weekly',
+                'changefreq' => 'daily',
                 'priority' => '1.0'
             ],
             [
                 'loc' => $this->generateUrl('register'),
-                'changefreq' => 'weekly',
+                'changefreq' => 'daily',
                 'priority' => '1.0'
             ],
             [
                 'loc' => $this->generateUrl('events'),
-                'changefreq' => 'weekly',
+                'changefreq' => 'daily',
                 'priority' => '1.0'
             ],
             [
                 'loc' => $this->generateUrl('events'),
-                'changefreq' => 'weekly',
+                'changefreq' => 'daily',
                 'priority' => '1.0'
             ]
         ];
@@ -71,7 +71,7 @@ class SeoController extends AbstractController
         foreach ($events as $event) {
             $urls[] = [
                 'loc' => $this->generateUrl('event', ['slug' => $event->getSlug()]),
-                'changefreq' => 'weekly',
+                'changefreq' => 'daily',
                 'priority' => '1.0'
             ];
         }
