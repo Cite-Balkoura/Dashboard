@@ -370,4 +370,14 @@ class Event
         $this->endDate = $endDate;
     }
 
+    public function isStarted(): bool
+    {
+        return $this->getStartDate()->getTimestamp() <= date_create()->getTimestamp();
+    }
+
+    public function isEnded(): bool
+    {
+        return $this->getEndDate()->getTimestamp() <= date_create()->getTimestamp();
+    }
+
 }

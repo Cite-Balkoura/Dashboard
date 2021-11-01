@@ -26,12 +26,17 @@ class EventController extends AbstractController
         /** @var User $user */
         if ($user = $this->getUser()) {
             if ($profile = $profileRepository->findByDiscordId(intval($user->getDiscordId()))) {
-                $participations = $participationRepository->findByProfileId(intval($profile->getId()));
+                $participations = $participationRepository->findByProfileId($profile->getId());
             }
         }
 
+        $events = $eventRepository->findAll();
+        $startedEvents = array_filter($events, function (Event $event) { return $event->isStarted(); });
+        $futureEvents = array_filter($events, function (Event $event) { return !$event->isStarted(); });
+
         return $this->render('events/index.html.twig', [
-            'events' => $eventRepository->findAll(),
+            'startedEvents' => $startedEvents,
+            'futureEvents' => $futureEvents,
             'canRegister' => null !== $profile,
             'participations' => $participations
         ]);
