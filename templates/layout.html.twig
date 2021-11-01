@@ -43,6 +43,9 @@
             {% for message in app.flashes('success') %}
             window.Swal.fire('{{ message[0] }}', '{{ message[1] }}', 'success');
             {% endfor %}
+            {% for message in app.flashes('error') %}
+            window.Swal.fire('{{ message[0] }}', '{{ message[1] }}', 'error');
+            {% endfor %}
         }
     </script>
 </html>

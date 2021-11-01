@@ -2,17 +2,16 @@
 
 namespace App\Controller;
 
-use App\Document\Common\Participation;
+use App\Document\Event;
 use App\Document\User;
+use App\Manager\EventManager;
 use App\Repository\Common\ParticipationRepository;
 use App\Repository\Common\ProfileRepository;
 use App\Repository\EventRepository;
-use App\Repository\Common\EventRepository as CommonEventRepository;
 use App\Utils\TimeUtils;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class EventController extends AbstractController
@@ -55,29 +54,19 @@ class EventController extends AbstractController
     }
 
     #[Route('/event/{slug}/register', name: 'eventRegister', methods: ['POST'])]
-    public function eventRegister(string $slug, Request $request, EventRepository $eventRepository, CommonEventRepository $commonEventRepository, ProfileRepository $profileRepository): Response
+    public function eventRegister(string $slug, Request $request, EventRepository $eventRepository, EventManager $eventManager): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
 
         $event = $eventRepository->findOneBy(['slug' => $slug]);
-        if (!$event || !$event->isAcceptRegistration())
-            $this->createNotFoundException();
+        if (!$event)
+            return $this->redirectToRoute('index');
 
         $submittedToken = $request->request->get('token');
         if (!$this->isCsrfTokenValid('register-event-' . $event->getId(), $submittedToken))
-            $this->createAccessDeniedException();
+            throw $this->createAccessDeniedException();
 
-        $commonEvent = $commonEventRepository->findOneBy(['id' => $event->getCommonId()]);
-        if (!$commonEvent)
-            throw new HttpException(Response::HTTP_INTERNAL_SERVER_ERROR);
-
-        $participation = new Participation();
-        $participation->setEvent($commonEvent);
-        $participation->setProfile($profileRepository->findByDiscordId(intval($this->getUser()->getDiscordId())));
-        $profileRepository->getDocumentManager()->persist($participation);
-        $profileRepository->getDocumentManager()->flush();
-
-        $this->addFlash('success', ['Inscription confirmée', 'Vous avez bien été inscrit à l\'événement ' . $event->getTitle() . '.']);
+        $eventManager->registerToEvent($event);
         return $this->redirectToRoute('event', ['slug' => $slug]);
     }
 }

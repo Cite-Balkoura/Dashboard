@@ -13,12 +13,21 @@ class ParticipationRepository extends ServiceDocumentRepository
         parent::__construct($registry, Participation::class);
     }
 
-    public function findByProfileId(int $profileId): array
+    public function findByProfileId(string $profileId): array
     {
         return $this->createQueryBuilder()
             ->field('profile')->equals($profileId)
             ->select(['event'])
             ->getQuery()
             ->toArray();
+    }
+
+    public function getParticipation(string $profileId, string $eventId): Participation
+    {
+        return $this->createQueryBuilder()
+            ->field('profile')->equals($profileId)
+            ->field('event')->equals($eventId)
+            ->getQuery()
+            ->getSingleResult();
     }
 }
