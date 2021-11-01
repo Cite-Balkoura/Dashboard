@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Document\Common\Participation;
 use App\Document\Event;
 use App\Document\User;
 use App\Manager\EventManager;
@@ -20,12 +21,14 @@ class EventController extends AbstractController
     public function index(EventRepository $eventRepository, ProfileRepository $profileRepository, ParticipationRepository $participationRepository): Response
     {
         $profile = null;
-        $participations = [];
+        $joinedEvents = [];
 
         /** @var User $user */
         if ($user = $this->getUser()) {
             if ($profile = $profileRepository->findByDiscordId(intval($user->getDiscordId()))) {
-                $participations = $participationRepository->findByProfileId($profile->getId());
+                $joinedEvents = array_map(function (Participation $participation) {
+                    return $participation->getEvent()->getId();
+                }, $participationRepository->findByProfileId($profile->getId()));
             }
         }
 
@@ -37,7 +40,7 @@ class EventController extends AbstractController
             'startedEvents' => $startedEvents,
             'futureEvents' => $futureEvents,
             'canRegister' => null !== $profile,
-            'participations' => $participations
+            'joinedEvents' => $joinedEvents
         ]);
     }
 

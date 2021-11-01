@@ -17,7 +17,6 @@ class ParticipationRepository extends ServiceDocumentRepository
     {
         return $this->createQueryBuilder()
             ->field('profile')->equals($profileId)
-            ->select(['event'])
             ->getQuery()
             ->toArray();
     }

@@ -21,7 +21,7 @@ class Event
     /**
      * @MongoDB\ReferenceOne(storeAs="id", targetDocument="App\Document\Common\Event", type="string")
      */
-    private string $commonId;
+    private string $commonId = '';
 
     /**
      * @MongoDB\Field(type="string")
