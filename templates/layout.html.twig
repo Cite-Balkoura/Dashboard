@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
+        <title>{% block title %}{% endblock %} | Grimtown</title>
+        {% block meta %}
+        {% endblock %}
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="icon" href="/favicon.ico">
         <link rel="manifest" href="/site.webmanifest">
-        <title>{% block title %}{% endblock %} | Grimtown</title>
         {{ encore_entry_link_tags('app') }}
     </head>
     <body>

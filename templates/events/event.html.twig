@@ -2,6 +2,15 @@
 
 {% block title %}{{ event.title }}{% endblock %}
 
+{% block meta %}
+<meta name="description" content="{{ event.shortDescription }}">
+<meta property="og:title" content="{{ event.title }}"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="{{ path('event', { slug: event.slug }) }}"/>
+<meta property="og:image" content="{{ event.banner }}"/>
+<meta property="og:description" content="{{ event.shortDescription }}"/>
+{% endblock %}
+
 {% block content %}
     <div class="flex-col w-full">
         <div class="flex-col bg-no-repeat bg-center bg-cover" style="background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('{{ event.largeBanner == null ? event.banner : event.largeBanner }}'); height: 25rem;">

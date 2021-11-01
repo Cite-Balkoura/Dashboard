@@ -2,6 +2,10 @@
 
 {% block title %}Événements{% endblock %}
 
+{% block meta %}
+<meta name="description" content="Découvrez tous les événements organisés par Cap sur Grimtown : {% for event in startedEvents %}{{ event.title }}, {% endfor %}{% for event in futureEvents %}{{ event.title }}, {% endfor %}et bien plus ! Inscrivez-vous dès maintenant.">
+{% endblock %}
+
 {% block content %}
     <div class="bg-no-repeat bg-center bg-cover background-main flex flex-grow flex-col">
         <div class="sm:mt-16 sm:px-12 py-6 h-full w-full">

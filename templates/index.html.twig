@@ -2,6 +2,10 @@
 
 {% block title %}Accueil{% endblock %}
 
+{% block meta %}
+<meta name="description" content="Bienvenue sur le site de Cap sur Grimtown ! Ici, retrouvez tous nos événements, nos informations et diverses informations et actualités.">
+{% endblock %}
+
 {% block content %}
     <div class="flex-grow justify-center content-center">
         {% if nextEvent is defined %}
@@ -76,11 +80,6 @@
                 </div>
             </div>
         </div>
-{#        <div class="flex w-full overflow-hidden bg-white" style="height: 50rem;">#}
-{#            <div class="w-2/3 mx-auto py-10">#}
-{#                <h2 class="text-center font-grimtown text-3xl font-bold text-gray-900 uppercase">Nos partenaires</h2>#}
-{#            </div>#}
-{#        </div>#}
     </div>
 {% endblock %}
 
