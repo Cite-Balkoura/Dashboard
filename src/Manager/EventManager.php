@@ -60,7 +60,7 @@ class EventManager
 //        $this->documentManager->persist($participation);
 //        $this->documentManager->flush();
 
-        $this->minecraftProducer->publish(json_encode(['type' => 'participation', 'discordId' => $discordId, 'event' => $commonEvent->getName()]));
+        $this->minecraftProducer->publish(json_encode(['type' => 'participation', 'discordId' => intval($discordId), 'event' => $commonEvent->getName()]));
 
         $this->session->getFlashBag()->add('success', ['Inscription envoyée', 'Votre demande d\'inscription a été enregistée !']);
     }

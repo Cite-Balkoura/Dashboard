@@ -6,6 +6,6 @@ old_sound_rabbit_mq:
         # use 'old_sound_rabbit_mq.task_producer' service to send data.
         minecraft:
             connection: default
-            exchange_options: { name: 'minecraft', type: direct }
+            exchange_options: { name: 'minecraft', type: direct, durable: false }
             default_routing_key: 'bot-input'
             service_alias: minecraft
