@@ -14,7 +14,7 @@
                 <div class="py-6 px-8">
                     <h2 class="font-bold text-gray-900 uppercase mb-1 font-grimtown text-2xl text-center my-2">Notre prochain événement :</h2>
                     <h1 class="font-bold text-yellow-600 uppercase mb-1 font-grimtown text-4xl text-center my-2">{{ nextEvent.title }}</h1>
-                    <p class="font-raleway mt-8 overflow-y-auto">{{ nextEvent.shortDescription }}</p>
+                    <p class="font-raleway mt-8 overflow-y-auto">{{ nextEvent.shortDescription|nl2br }}</p>
                 </div>
             </div>
             <div class="md:flex md:w-full text-white hidden bg-no-repeat bg-center bg-cover pr-20" style="background-image: url('{{ nextEvent.banner|escape }}');">

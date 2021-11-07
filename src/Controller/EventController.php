@@ -33,12 +33,14 @@ class EventController extends AbstractController
         }
 
         $events = $eventRepository->findAll();
-        $startedEvents = array_filter($events, function (Event $event) { return $event->isStarted(); });
-        $futureEvents = array_filter($events, function (Event $event) { return !$event->isStarted(); });
+        $startedEvents = array_filter($events, function (Event $event) { return $event->isStarted() && !$event->isEnded(); });
+        $scheduledEvents = array_filter($events, function (Event $event) { return !$event->isStarted(); });
+        $endedEvents = array_filter($events, function (Event $event) { return $event->isEnded(); });
 
         return $this->render('events/index.html.twig', [
             'startedEvents' => $startedEvents,
-            'futureEvents' => $futureEvents,
+            'scheduledEvents' => $scheduledEvents,
+            'endedEvents' => $endedEvents,
             'canRegister' => null !== $profile,
             'joinedEvents' => $joinedEvents
         ]);
