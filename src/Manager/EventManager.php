@@ -20,15 +20,15 @@ class EventManager
     private SessionInterface $session;
     private Security $security;
     private DocumentManager $documentManager;
-    private ProducerInterface $botInputProducer;
+    private ProducerInterface $minecraftProducer;
     private ParticipationRepository $participationRepository;
 
-    public function __construct(RequestStack $requestStack, Security $security, DocumentManager $documentManager, ProducerInterface $botInputProducer, ParticipationRepository $participationRepository)
+    public function __construct(RequestStack $requestStack, Security $security, DocumentManager $documentManager, ProducerInterface $minecraftProducer, ParticipationRepository $participationRepository)
     {
         $this->session = $requestStack->getSession();
         $this->security = $security;
         $this->documentManager = $documentManager;
-        $this->botInputProducer = $botInputProducer;
+        $this->minecraftProducer = $minecraftProducer;
         $this->participationRepository = $participationRepository;
     }
 
@@ -54,15 +54,15 @@ class EventManager
             return;
         }
 
-        $participation = new Participation();
-        $participation->setEvent($commonEvent);
-        $participation->setProfile($profile);
-        $this->documentManager->persist($participation);
-        $this->documentManager->flush();
+//        $participation = new Participation();
+//        $participation->setEvent($commonEvent);
+//        $participation->setProfile($profile);
+//        $this->documentManager->persist($participation);
+//        $this->documentManager->flush();
 
-        $this->botInputProducer->publish(json_encode(['type' => 'participation', 'discordId' => $discordId, 'event' => $commonEvent->getName()]));
+        $this->minecraftProducer->publish(json_encode(['type' => 'participation', 'discordId' => $discordId, 'event' => $commonEvent->getName()]));
 
-        $this->session->getFlashBag()->add('success', ['Inscription confirmée', 'Vous avez bien été inscrit à l\'événement ' . $event->getTitle() . '.']);
+        $this->session->getFlashBag()->add('success', ['Inscription envoyée', 'Votre demande d\'inscription a été enregistée !']);
     }
 
 }
